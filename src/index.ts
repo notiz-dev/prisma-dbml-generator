@@ -79,7 +79,7 @@ const generateRefs = (models: DMMF.Model[]): string[] => {
             (field as any).relationFromFields
           )} ${getRefOperator(models, relatedTables[1], relatedTables[0])} ${
             relatedTables[1]
-          }.${combineKeys(field.relationToFields!![0])}`
+          }.${combineKeys(field.relationToFields!!)}`
         );
       });
   });
