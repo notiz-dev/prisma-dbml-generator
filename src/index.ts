@@ -75,11 +75,23 @@ const generateRefs = (models: DMMF.Model[]): string[] => {
       .forEach((field) => {
         const relatedTables = field.relationName!!.split('To');
         refs.push(
-          `Ref: ${relatedTables[0]}.${(field as any).relationFromFields[0]} - ${
+          `Ref: ${relatedTables[0]}.${
+            (field as any).relationFromFields[0]
+          } ${getRefOperator(models, relatedTables[1], relatedTables[0])} ${
             relatedTables[1]
           }.${field.relationToFields!![0]}`
         );
       });
   });
   return refs;
+};
+
+const getRefOperator = (
+  models: DMMF.Model[],
+  from: string,
+  to: string
+): string => {
+  const model = models.find((model) => model.name === from);
+  const field = model?.fields.find((field) => field.type === to);
+  return field?.isList ? '>' : '-';
 };
