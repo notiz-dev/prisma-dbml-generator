@@ -4,13 +4,16 @@ email String
 name String
 posts Post
 profile Profile
+role Role
   }
+
 Table Profile {
     id Int
 bio String
 user User
 userId Int
   }
+
 Table Post {
     id Int
 title String
@@ -18,4 +21,9 @@ content String
 published Boolean
 author User
 authorId Int
+  }
+
+Enum Role {
+        ADMIN
+USER
   }

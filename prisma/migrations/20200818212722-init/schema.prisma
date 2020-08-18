@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgres"
   url = "***"
 }
 
@@ -20,6 +20,7 @@ model User {
   name    String?
   posts   Post[]
   profile Profile?
+  role    Role
 }
 
 model Profile {
@@ -36,4 +37,9 @@ model Post {
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  Int?
+}
+
+enum Role {
+  ADMIN
+  USER
 }

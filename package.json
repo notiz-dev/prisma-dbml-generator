@@ -8,7 +8,8 @@
     "dev": "tsc -p . && npm run prisma:generate",
     "prisma:save": "npx prisma migrate save --experimental",
     "prisma:up": "npx prisma migrate up --experimental",
-    "prisma:generate": "npx prisma generate"
+    "prisma:generate": "npx prisma generate",
+    "docker:db": "docker-compose -f docker-compose.db.yml up -d"
   },
   "keywords": [],
   "author": "",

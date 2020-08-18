@@ -2,6 +2,14 @@
   "version": "0.3.14-fixed",
   "steps": [
     {
+      "tag": "CreateEnum",
+      "enum": "Role",
+      "values": [
+        "ADMIN",
+        "USER"
+      ]
+    },
+    {
       "tag": "CreateSource",
       "source": "db"
     },
@@ -12,7 +20,7 @@
         "source": "db"
       },
       "argument": "provider",
-      "value": "\"sqlite\""
+      "value": "\"postgres\""
     },
     {
       "tag": "CreateArgument",
@@ -108,6 +116,13 @@
       "field": "profile",
       "type": "Profile",
       "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "role",
+      "type": "Role",
+      "arity": "Required"
     },
     {
       "tag": "CreateModel",

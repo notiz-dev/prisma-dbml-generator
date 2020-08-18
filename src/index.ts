@@ -21,7 +21,10 @@ generatorHandler({
       try {
         await mkdir(options.generator.output, { recursive: true });
 
-        const dbml = generateTables(options.dmmf.datamodel.models);
+        const tables = generateTables(options.dmmf.datamodel.models);
+        const enums = generateEnums(options.dmmf.datamodel.enums);
+
+        const dbml = [...tables, ...enums].join('\n\n');
 
         await writeFile(join(options.generator.output, 'schema.dbml'), dbml);
       } catch (e) {
@@ -34,20 +37,26 @@ generatorHandler({
   },
 });
 
-const generateTables = (models: DMMF.Model[]): string => {
-  return models
-    .map(
-      (model) => `Table ${model.name} {
+const generateTables = (models: DMMF.Model[]): string[] => {
+  return models.map(
+    (model) => `Table ${model.name} {
     ${generateFields(model.fields)}
   }`
-    )
-    .join(`\n`);
+  );
 };
 
 const generateFields = (fields: DMMF.Field[]): string => {
   return fields.map((field) => `${field.name} ${field.type}`).join('\n');
 };
 
-const generateEnum = (models: DMMF.Model[]): string => {
-  return '';
+const generateEnums = (enums: DMMF.DatamodelEnum[]): string[] => {
+  return enums.map(
+    (e) => `Enum ${e.name} {
+        ${generateEnumValues(e.values)}
+  }`
+  );
+};
+
+const generateEnumValues = (values: DMMF.EnumValue[]): string => {
+  return values.map((value) => `${value.name}`).join('\n');
 };

@@ -8,6 +8,10 @@ generator dbml {
 }
 ```
 
+https://dbdiagram.io
+
+https://www.dbml.org/home
+
 ## Development
 
 ```bash
