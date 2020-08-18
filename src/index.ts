@@ -41,25 +41,25 @@ generatorHandler({
 const generateTables = (models: DMMF.Model[]): string[] => {
   return models.map(
     (model) => `Table ${model.name} {
-    ${generateFields(model.fields)}
-  }`
+  ${generateFields(model.fields)}
+}`
   );
 };
 
 const generateFields = (fields: DMMF.Field[]): string => {
-  return fields.map((field) => `${field.name} ${field.type}`).join('\n');
+  return fields.map((field) => `${field.name} ${field.type}`).join('\n\t');
 };
 
 const generateEnums = (enums: DMMF.DatamodelEnum[]): string[] => {
   return enums.map(
     (e) => `Enum ${e.name} {
-        ${generateEnumValues(e.values)}
-  }`
+  ${generateEnumValues(e.values)}
+}`
   );
 };
 
 const generateEnumValues = (values: DMMF.EnumValue[]): string => {
-  return values.map((value) => `${value.name}`).join('\n');
+  return values.map((value) => `${value.name}`).join('\n\t');
 };
 
 const generateRefs = (models: DMMF.Model[]): string[] => {
