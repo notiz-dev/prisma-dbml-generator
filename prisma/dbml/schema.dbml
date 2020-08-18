@@ -27,3 +27,7 @@ Enum Role {
         ADMIN
 USER
   }
+
+Ref: Profile.userId - User.id
+
+Ref: Post.authorId - User.id

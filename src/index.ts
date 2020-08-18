@@ -23,8 +23,9 @@ generatorHandler({
 
         const tables = generateTables(options.dmmf.datamodel.models);
         const enums = generateEnums(options.dmmf.datamodel.enums);
+        const refs = generateRefs(options.dmmf.datamodel.models);
 
-        const dbml = [...tables, ...enums].join('\n\n');
+        const dbml = [...tables, ...enums, ...refs].join('\n\n');
 
         await writeFile(join(options.generator.output, 'schema.dbml'), dbml);
       } catch (e) {
@@ -59,4 +60,26 @@ const generateEnums = (enums: DMMF.DatamodelEnum[]): string[] => {
 
 const generateEnumValues = (values: DMMF.EnumValue[]): string => {
   return values.map((value) => `${value.name}`).join('\n');
+};
+
+const generateRefs = (models: DMMF.Model[]): string[] => {
+  const refs: string[] = [];
+  models.forEach((model) => {
+    model.fields
+      .filter(
+        (field) =>
+          field.relationName &&
+          field.relationToFields?.length &&
+          (field as any).relationFromFields.length
+      )
+      .forEach((field) => {
+        const relatedTables = field.relationName!!.split('To');
+        refs.push(
+          `Ref: ${relatedTables[0]}.${(field as any).relationFromFields[0]} - ${
+            relatedTables[1]
+          }.${field.relationToFields!![0]}`
+        );
+      });
+  });
+  return refs;
 };
