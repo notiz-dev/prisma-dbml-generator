@@ -1,0 +1,21 @@
+Table User {
+    id Int
+email String
+name String
+posts Post
+profile Profile
+  }
+Table Profile {
+    id Int
+bio String
+user User
+userId Int
+  }
+Table Post {
+    id Int
+title String
+content String
+published Boolean
+author User
+authorId Int
+  }
