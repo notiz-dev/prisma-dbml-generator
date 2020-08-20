@@ -25,9 +25,12 @@ generatorHandler({
         const enums = generateEnums(options.dmmf.datamodel.enums);
         const refs = generateRefs(options.dmmf.datamodel.models);
 
-        const dbml = [...tables, ...enums, ...refs].join('\n\n');
+        const dbmlContent = [...tables, ...enums, ...refs].join('\n\n');
 
-        await writeFile(join(options.generator.output, 'schema.dbml'), dbml);
+        await writeFile(
+          join(options.generator.output, 'schema.dbml'),
+          dbmlContent
+        );
       } catch (e) {
         console.error('Error: unable to write files for Prisma DBML Generator');
         throw e;
@@ -40,26 +43,22 @@ generatorHandler({
 
 const generateTables = (models: DMMF.Model[]): string[] => {
   return models.map(
-    (model) => `Table ${model.name} {
-  ${generateFields(model.fields)}
-}`
+    (model) => `Table ${model.name} {\n` + generateFields(model.fields) + '\n}'
   );
 };
 
 const generateFields = (fields: DMMF.Field[]): string => {
-  return fields.map((field) => `${field.name} ${field.type}`).join('\n\t');
+  return fields.map((field) => `\t${field.name} ${field.type}`).join('\n');
 };
 
 const generateEnums = (enums: DMMF.DatamodelEnum[]): string[] => {
   return enums.map(
-    (e) => `Enum ${e.name} {
-  ${generateEnumValues(e.values)}
-}`
+    (e) => `Enum ${e.name} {\n` + generateEnumValues(e.values) + '\n}'
   );
 };
 
 const generateEnumValues = (values: DMMF.EnumValue[]): string => {
-  return values.map((value) => `${value.name}`).join('\n\t');
+  return values.map((value) => `\t${value.name}`).join('\n');
 };
 
 const generateRefs = (models: DMMF.Model[]): string[] => {
