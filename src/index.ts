@@ -61,7 +61,7 @@ const generateFields = (fields: DMMF.Field[]): string => {
   return fields
     .map(
       (field) =>
-        `\t${field.name} ${field.type}${generateColumnDefinition(field)}`
+        `  ${field.name} ${field.type}${generateColumnDefinition(field)}`
     )
     .join('\n');
 };
@@ -113,7 +113,7 @@ const generateEnums = (enums: DMMF.DatamodelEnum[]): string[] => {
 };
 
 const generateEnumValues = (values: DMMF.EnumValue[]): string => {
-  return values.map((value) => `\t${value.name}`).join('\n');
+  return values.map((value) => `  ${value.name}`).join('\n');
 };
 
 const generateRefs = (models: DMMF.Model[]): string[] => {
