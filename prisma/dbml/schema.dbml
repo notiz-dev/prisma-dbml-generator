@@ -15,7 +15,7 @@ Table Profile {
   user User [not null]
   userId Int [unique, not null]
 
-	Note: 'User profile'
+  Note: 'User profile'
 }
 
 Table Post {

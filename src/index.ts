@@ -54,7 +54,7 @@ const generateTables = (models: DMMF.Model[]): string[] => {
 
 const generateTableDocumentation = (model: DMMF.Model): string => {
   const doc = (model as any).documentation;
-  return doc ? `\n\n\tNote: '${doc}'` : '';
+  return doc ? `\n\n  Note: '${doc}'` : '';
 };
 
 const generateFields = (fields: DMMF.Field[]): string => {

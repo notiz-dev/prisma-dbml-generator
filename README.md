@@ -6,13 +6,21 @@ Automatically generate a [DBML](https://www.dbml.org/home) schema from your Pris
 
 ## Getting started
 
+1. Install this generator:
+
+```bash
+npm install prisma-dbml-generator
+```
+
+2. Add the generator to the `schema.prisma`
+
 ```prisma
 generator dbml {
   provider = "node ./dist/index.js"
 }
 ```
 
-Running `npx prisma generator` for the following Prisma schema
+3. Running `npx prisma generator` for the following Prisma schema
 
 ```prisma
 model User {
@@ -51,7 +59,7 @@ enum Role {
 }
 ```
 
-generates the following DBML schema
+generates the following `schema.dbml` in `prisma/docs`
 
 ```dbml
 Table User {
@@ -71,7 +79,7 @@ Table Profile {
   user User [not null]
   userId Int [unique, not null]
 
-	Note: 'User profile'
+  Note: 'User profile'
 }
 
 Table Post {
@@ -92,6 +100,8 @@ Ref: Profile.userId - User.id
 
 Ref: Post.authorId > User.id
 ```
+
+4. [Visualize](<[https://dbdiagram.io/d](https://dbdiagram.io/d)>) the `schema.dbml`
 
 ## Development
 
