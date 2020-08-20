@@ -9,14 +9,14 @@ Automatically generate a [DBML](https://www.dbml.org/home) schema from your Pris
 1. Install this generator:
 
 ```bash
-npm install prisma-dbml-generator
+npm install -D prisma-dbml-generator
 ```
 
 2. Add the generator to the `schema.prisma`
 
 ```prisma
 generator dbml {
-  provider = "node ./dist/index.js"
+  provider = "node node_modules/prisma-dbml-generator"
 }
 ```
 
