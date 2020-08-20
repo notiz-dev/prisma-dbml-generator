@@ -14,6 +14,8 @@ Table Profile {
 	bio String
 	user User [not null]
 	userId Int [unique, not null]
+
+	Note: 'User profile'
 }
 
 Table Post {

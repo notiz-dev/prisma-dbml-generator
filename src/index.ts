@@ -44,8 +44,17 @@ generatorHandler({
 
 const generateTables = (models: DMMF.Model[]): string[] => {
   return models.map(
-    (model) => `Table ${model.name} {\n` + generateFields(model.fields) + '\n}'
+    (model) =>
+      `Table ${model.name} {\n` +
+      generateFields(model.fields) +
+      generateTableDocumentation(model) +
+      '\n}'
   );
+};
+
+const generateTableDocumentation = (model: DMMF.Model): string => {
+  const doc = (model as any).documentation;
+  return doc ? `\n\n\tNote: '${doc}'` : '';
 };
 
 const generateFields = (fields: DMMF.Field[]): string => {
