@@ -101,7 +101,7 @@ Ref: Profile.userId - User.id
 Ref: Post.authorId > User.id
 ```
 
-4. [Visualize](<[https://dbdiagram.io/d](https://dbdiagram.io/d)>) the `schema.dbml`
+4. [Visualize](https://dbdiagram.io/d) the `schema.dbml`
 
 ## Development
 
