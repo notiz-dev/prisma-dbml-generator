@@ -15,14 +15,18 @@ generator dbml {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  posts   Post[]
-  profile Profile?
-  role    Role
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  name      String?
+  posts     Post[]
+  profile   Profile?
+  /// user role
+  role      Role
 }
 
+/// User profile
 model Profile {
   id     Int     @default(autoincrement()) @id
   bio    String?
@@ -39,7 +43,8 @@ model Post {
   authorId  Int?
 }
 
+/// user role
 enum Role {
-  ADMIN
+  ADMIN /// allowed to do everything
   USER
 }

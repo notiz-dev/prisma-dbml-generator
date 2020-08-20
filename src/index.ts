@@ -21,6 +21,7 @@ generatorHandler({
       try {
         await mkdir(options.generator.output, { recursive: true });
 
+        // await writeFile('./test.json', JSON.stringify(options.dmmf.datamodel));
         const tables = generateTables(options.dmmf.datamodel.models);
         const enums = generateEnums(options.dmmf.datamodel.enums);
         const refs = generateRefs(options.dmmf.datamodel.models);
@@ -48,7 +49,52 @@ const generateTables = (models: DMMF.Model[]): string[] => {
 };
 
 const generateFields = (fields: DMMF.Field[]): string => {
-  return fields.map((field) => `\t${field.name} ${field.type}`).join('\n');
+  return fields
+    .map(
+      (field) =>
+        `\t${field.name} ${field.type}${generateColumnDefinition(field)}`
+    )
+    .join('\n');
+};
+
+const generateColumnDefinition = (field: DMMF.Field): string => {
+  const columnDefinition = [];
+  if (field.isId) {
+    columnDefinition.push('pk');
+  }
+
+  if ((field.default as DMMF.FieldDefault)?.name === 'autoincrement') {
+    columnDefinition.push('increment');
+  }
+
+  if ((field.default as DMMF.FieldDefault)?.name === 'now') {
+    columnDefinition.push('default: `now()`');
+  }
+
+  if (field.isUnique) {
+    columnDefinition.push('unique');
+  }
+
+  if (field.isRequired && !field.isId) {
+    columnDefinition.push('not null');
+  }
+
+  if (
+    typeof field.default === 'string' ||
+    typeof field.default === 'boolean' ||
+    typeof field.default === 'number'
+  ) {
+    columnDefinition.push(`default: ${field.default}`);
+  }
+
+  if ((field as any).documentation) {
+    columnDefinition.push(`note: '${(field as any).documentation}'`);
+  }
+
+  if (columnDefinition.length) {
+    return ' [' + columnDefinition.join(', ') + ']';
+  }
+  return '';
 };
 
 const generateEnums = (enums: DMMF.DatamodelEnum[]): string[] => {

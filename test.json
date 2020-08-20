@@ -1,270 +1,305 @@
 {
-    "enums": [],
-    "models": [
+  "enums": [
+    {
+      "name": "Role",
+      "values": [
+        { "name": "ADMIN", "dbName": null },
+        { "name": "USER", "dbName": null }
+      ],
+      "dbName": null,
+      "documentation": "user role"
+    }
+  ],
+  "models": [
+    {
+      "name": "User",
+      "isEmbedded": false,
+      "dbName": null,
+      "fields": [
         {
-            "name": "User",
-            "isEmbedded": false,
-            "dbName": null,
-            "fields": [
-                {
-                    "name": "id",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": false,
-                    "isId": true,
-                    "isReadOnly": false,
-                    "type": "Int",
-                    "hasDefaultValue": true,
-                    "default": {
-                        "name": "autoincrement",
-                        "args": []
-                    },
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "email",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": true,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "String",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "name",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "String",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "posts",
-                    "kind": "object",
-                    "isList": true,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "Post",
-                    "hasDefaultValue": false,
-                    "relationName": "PostToUser",
-                    "relationFromFields": [],
-                    "relationToFields": [],
-                    "relationOnDelete": "NONE",
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "profile",
-                    "kind": "object",
-                    "isList": false,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "Profile",
-                    "hasDefaultValue": false,
-                    "relationName": "ProfileToUser",
-                    "relationFromFields": [],
-                    "relationToFields": [],
-                    "relationOnDelete": "NONE",
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                }
-            ],
-            "isGenerated": false,
-            "idFields": [],
-            "uniqueFields": [],
-            "uniqueIndexes": []
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "type": "Int",
+          "hasDefaultValue": true,
+          "default": { "name": "autoincrement", "args": [] },
+          "isGenerated": false,
+          "isUpdatedAt": false
         },
         {
-            "name": "Profile",
-            "isEmbedded": false,
-            "dbName": null,
-            "fields": [
-                {
-                    "name": "id",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": false,
-                    "isId": true,
-                    "isReadOnly": false,
-                    "type": "Int",
-                    "hasDefaultValue": true,
-                    "default": {
-                        "name": "autoincrement",
-                        "args": []
-                    },
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "bio",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "String",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "user",
-                    "kind": "object",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "User",
-                    "hasDefaultValue": false,
-                    "relationName": "ProfileToUser",
-                    "relationFromFields": [
-                        "userId"
-                    ],
-                    "relationToFields": [
-                        "id"
-                    ],
-                    "relationOnDelete": "NONE",
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "userId",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": true,
-                    "isId": false,
-                    "isReadOnly": true,
-                    "type": "Int",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                }
-            ],
-            "isGenerated": false,
-            "idFields": [],
-            "uniqueFields": [],
-            "uniqueIndexes": []
+          "name": "createdAt",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "DateTime",
+          "hasDefaultValue": true,
+          "default": { "name": "now", "args": [] },
+          "isGenerated": false,
+          "isUpdatedAt": false
         },
         {
-            "name": "Post",
-            "isEmbedded": false,
-            "dbName": null,
-            "fields": [
-                {
-                    "name": "id",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": false,
-                    "isId": true,
-                    "isReadOnly": false,
-                    "type": "Int",
-                    "hasDefaultValue": true,
-                    "default": {
-                        "name": "autoincrement",
-                        "args": []
-                    },
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "title",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "String",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "content",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "String",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "published",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": true,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "Boolean",
-                    "hasDefaultValue": true,
-                    "default": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "author",
-                    "kind": "object",
-                    "isList": false,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": false,
-                    "type": "User",
-                    "hasDefaultValue": false,
-                    "relationName": "PostToUser",
-                    "relationFromFields": [
-                        "authorId"
-                    ],
-                    "relationToFields": [
-                        "id"
-                    ],
-                    "relationOnDelete": "NONE",
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                },
-                {
-                    "name": "authorId",
-                    "kind": "scalar",
-                    "isList": false,
-                    "isRequired": false,
-                    "isUnique": false,
-                    "isId": false,
-                    "isReadOnly": true,
-                    "type": "Int",
-                    "hasDefaultValue": false,
-                    "isGenerated": false,
-                    "isUpdatedAt": false
-                }
-            ],
-            "isGenerated": false,
-            "idFields": [],
-            "uniqueFields": [],
-            "uniqueIndexes": []
+          "name": "updatedAt",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "DateTime",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": true
+        },
+        {
+          "name": "email",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "String",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "name",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "String",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "posts",
+          "kind": "object",
+          "isList": true,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "Post",
+          "hasDefaultValue": false,
+          "relationName": "PostToUser",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "relationOnDelete": "NONE",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "profile",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "Profile",
+          "hasDefaultValue": false,
+          "relationName": "ProfileToUser",
+          "relationFromFields": [],
+          "relationToFields": [],
+          "relationOnDelete": "NONE",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "role",
+          "kind": "enum",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "Role",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false,
+          "documentation": "user role"
         }
-    ]
+      ],
+      "isGenerated": false,
+      "idFields": [],
+      "uniqueFields": [],
+      "uniqueIndexes": []
+    },
+    {
+      "name": "Profile",
+      "isEmbedded": false,
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "type": "Int",
+          "hasDefaultValue": true,
+          "default": { "name": "autoincrement", "args": [] },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "bio",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "String",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "user",
+          "kind": "object",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "User",
+          "hasDefaultValue": false,
+          "relationName": "ProfileToUser",
+          "relationFromFields": ["userId"],
+          "relationToFields": ["id"],
+          "relationOnDelete": "NONE",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "userId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": true,
+          "isId": false,
+          "isReadOnly": true,
+          "type": "Int",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "isGenerated": false,
+      "documentation": "User profile",
+      "idFields": [],
+      "uniqueFields": [],
+      "uniqueIndexes": []
+    },
+    {
+      "name": "Post",
+      "isEmbedded": false,
+      "dbName": null,
+      "fields": [
+        {
+          "name": "id",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": true,
+          "isReadOnly": false,
+          "type": "Int",
+          "hasDefaultValue": true,
+          "default": { "name": "autoincrement", "args": [] },
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "title",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "String",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "content",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "String",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "published",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": true,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "Boolean",
+          "hasDefaultValue": true,
+          "default": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "author",
+          "kind": "object",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": false,
+          "type": "User",
+          "hasDefaultValue": false,
+          "relationName": "PostToUser",
+          "relationFromFields": ["authorId"],
+          "relationToFields": ["id"],
+          "relationOnDelete": "NONE",
+          "isGenerated": false,
+          "isUpdatedAt": false
+        },
+        {
+          "name": "authorId",
+          "kind": "scalar",
+          "isList": false,
+          "isRequired": false,
+          "isUnique": false,
+          "isId": false,
+          "isReadOnly": true,
+          "type": "Int",
+          "hasDefaultValue": false,
+          "isGenerated": false,
+          "isUpdatedAt": false
+        }
+      ],
+      "isGenerated": false,
+      "idFields": [],
+      "uniqueFields": [],
+      "uniqueIndexes": []
+    }
+  ]
 }
