@@ -9,7 +9,8 @@
     "prisma:save": "npx prisma migrate save --experimental",
     "prisma:up": "npx prisma migrate up --experimental",
     "prisma:generate": "npx prisma generate",
-    "docker:db": "docker-compose -f docker-compose.db.yml up -d"
+    "docker:db": "docker-compose -f docker-compose.db.yml up -d",
+    "changlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "keywords": [
     "prisma",
