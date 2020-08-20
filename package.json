@@ -2,6 +2,7 @@
   "name": "prisma-dbml-generator",
   "version": "0.1.0",
   "description": "Prisma DBML Generator",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc -p .",
     "dev": "tsc -p . && npm run prisma:generate",
