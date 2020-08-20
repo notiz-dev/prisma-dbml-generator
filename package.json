@@ -1,8 +1,7 @@
 {
   "name": "prisma-dbml-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Prisma DBML Generator",
   "scripts": {
     "build": "tsc -p .",
     "dev": "tsc -p . && npm run prisma:generate",
@@ -11,8 +10,18 @@
     "prisma:generate": "npx prisma generate",
     "docker:db": "docker-compose -f docker-compose.db.yml up -d"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "prisma",
+    "dbml"
+  ],
+  "contributors": [
+    {
+      "name": "Marc Stammerjohann"
+    },
+    {
+      "name": "Gary Großgarten"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "@dbml/core": "~2.1.1",
