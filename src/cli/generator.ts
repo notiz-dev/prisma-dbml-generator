@@ -5,7 +5,7 @@ import { generate } from './dbml-generator';
 generatorHandler({
   onManifest: () => ({
     defaultOutput: './dbml',
-    prettyName: 'Prisma DBML Generator',
+    prettyName: 'DBML Schema',
   }),
   onGenerate: generate,
 });
