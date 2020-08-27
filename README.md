@@ -108,3 +108,7 @@ Ref: Post.authorId > User.id
 ```bash
 npm run dev
 ```
+
+## Helpful
+
+[Prisma Generator](https://github.com/prisma/specs/tree/master/generators)
