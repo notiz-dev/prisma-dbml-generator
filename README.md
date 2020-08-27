@@ -16,7 +16,7 @@ npm install -D prisma-dbml-generator
 
 ```prisma
 generator dbml {
-  provider = "node node_modules/prisma-dbml-generator"
+  provider = "prisma-dbml-generator"
 }
 ```
 
