@@ -1,3 +1,12 @@
+## [0.1.1](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.1.0...v0.1.1) (2020-08-27)
+
+
+### Features
+
+* **default:** add '' around enum default values ([a1117b3](https://github.com/notiz-dev/prisma-dbml-generator/commit/a1117b3f81d0ca7fdc7a3d8f403eccd6676f3676))
+
+
+
 # 0.1.0 (2020-08-20)
 
 
