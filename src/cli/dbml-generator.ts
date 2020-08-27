@@ -6,7 +6,6 @@ import { join } from 'path';
 const { mkdir, writeFile } = promises;
 
 export async function generate(options: GeneratorOptions) {
-  console.log('DBML generator', options.dmmf.datamodel);
   if (options.generator.output) {
     try {
       await mkdir(options.generator.output, { recursive: true });
