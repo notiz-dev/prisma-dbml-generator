@@ -23,7 +23,7 @@ model User {
   posts     Post[]
   profile   Profile?
   /// user role
-  role      Role
+  role      Role @default(USER)
 }
 
 /// User profile

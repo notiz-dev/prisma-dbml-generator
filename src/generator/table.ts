@@ -1,6 +1,6 @@
-import { DMMF } from "@prisma/generator-helper";
+import { DMMF } from '@prisma/generator-helper';
 
-export function generateTables(models: DMMF.Model[]): string[]  {
+export function generateTables(models: DMMF.Model[]): string[] {
   return models.map(
     (model) =>
       `Table ${model.name} {\n` +
@@ -8,7 +8,7 @@ export function generateTables(models: DMMF.Model[]): string[]  {
       generateTableDocumentation(model) +
       '\n}'
   );
-};
+}
 
 const generateTableDocumentation = (model: DMMF.Model): string => {
   const doc = (model as any).documentation;
@@ -51,7 +51,11 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
     typeof field.default === 'boolean' ||
     typeof field.default === 'number'
   ) {
-    columnDefinition.push(`default: ${field.default}`);
+    if (field.kind === 'enum') {
+      columnDefinition.push(`default: '${field.default}'`);
+    } else {
+      columnDefinition.push(`default: ${field.default}`);
+    }
   }
 
   if ((field as any).documentation) {
