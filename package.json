@@ -27,7 +27,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@dbml/core": "~2.1.1",
     "@prisma/client": "~2.5.1",
     "@prisma/generator-helper": "~2.5.1"
   },
