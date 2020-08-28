@@ -11,7 +11,7 @@ export function generateTables(models: DMMF.Model[]): string[] {
 }
 
 const generateTableDocumentation = (model: DMMF.Model): string => {
-  const doc = (model as any).documentation;
+  const doc = model.documentation;
   return doc ? `\n\n  Note: '${doc}'` : '';
 };
 
@@ -58,8 +58,8 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
     }
   }
 
-  if ((field as any).documentation) {
-    columnDefinition.push(`note: '${(field as any).documentation}'`);
+  if (field.documentation) {
+    columnDefinition.push(`note: '${field.documentation}'`);
   }
 
   if (columnDefinition.length) {

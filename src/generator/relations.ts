@@ -8,13 +8,13 @@ export function generateRefs(models: DMMF.Model[]): string[] {
         (field) =>
           field.relationName &&
           field.relationToFields?.length &&
-          (field as any).relationFromFields.length
+          field.relationFromFields?.length
       )
       .forEach((field) => {
         const relatedTables = field.relationName!!.split('To');
         refs.push(
           `Ref: ${relatedTables[0]}.${combineKeys(
-            (field as any).relationFromFields
+            field.relationFromFields!
           )} ${getRefOperator(models, relatedTables[1], relatedTables[0])} ${
             relatedTables[1]
           }.${combineKeys(field.relationToFields!!)}`
@@ -33,6 +33,7 @@ const getRefOperator = (
   const field = model?.fields.find((field) => field.type === to);
   return field?.isList ? '>' : '-';
 };
+
 // Composite foreign keys:
 // Ref: merchant_periods.(merchant_id, country_code) > merchants.(id, country_code)
 const combineKeys = (keys: string[]): string => {
