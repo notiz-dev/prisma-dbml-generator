@@ -1,3 +1,21 @@
+## [0.1.4](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.1.0...v0.1.4) (2020-09-01)
+
+
+### Bug Fixes
+
+* **relations:** add test cases for relations ([e68fc5f](https://github.com/notiz-dev/prisma-dbml-generator/commit/e68fc5ff36061d4431ce8156b3905cba1c2525e0))
+* point bin to dist ([547191c](https://github.com/notiz-dev/prisma-dbml-generator/commit/547191c4253f5c06dd5b82fa9fb49884feb29c10))
+
+
+### Features
+
+* **default:** add '' around enum default values ([a1117b3](https://github.com/notiz-dev/prisma-dbml-generator/commit/a1117b3f81d0ca7fdc7a3d8f403eccd6676f3676))
+* **generator:** update prettyName ([9b4e487](https://github.com/notiz-dev/prisma-dbml-generator/commit/9b4e487b66a9a00624ca3c3dda1e76d0327648c2))
+* **prisma:** switch to prisma 2.6.0 dev version ([e0dcd2b](https://github.com/notiz-dev/prisma-dbml-generator/commit/e0dcd2b39ab945a48af98c83105c39bd81d9dfbd))
+* **tests:** adding tests for relations ([e4be803](https://github.com/notiz-dev/prisma-dbml-generator/commit/e4be8037d852a1c32dea0ee62aede1a19ee53ef4))
+
+
+
 ## [0.1.2](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.1.0...v0.1.2) (2020-08-27)
 
 
