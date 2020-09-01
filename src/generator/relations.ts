@@ -15,26 +15,34 @@ export function generateRelations(models: DMMF.Model[]): string[] {
           field.relationFromFields?.length
       )
       .forEach((field) => {
-        const relatedTables = field.relationName!!.split('To');
+        const relationFrom = model.name;
+        const relationTo = field.type;
+
+        const relationOperator = getRelationOperator(
+          models,
+          relationFrom,
+          relationTo
+        );
+
         refs.push(
-          `Ref: ${relatedTables[0]}.${combineKeys(
+          `Ref: ${relationFrom}.${combineKeys(
             field.relationFromFields!
-          )} ${getRefOperator(models, relatedTables[1], relatedTables[0])} ${
-            relatedTables[1]
-          }.${combineKeys(field.relationToFields!!)}`
+          )} ${relationOperator} ${relationTo}.${combineKeys(
+            field.relationToFields!!
+          )}`
         );
       });
   });
   return refs;
 }
 
-const getRefOperator = (
+const getRelationOperator = (
   models: DMMF.Model[],
   from: string,
   to: string
 ): string => {
-  const model = models.find((model) => model.name === from);
-  const field = model?.fields.find((field) => field.type === to);
+  const model = models.find((model) => model.name === to);
+  const field = model?.fields.find((field) => field.type === from);
   return field?.isList ? manyToOne : oneToOne;
 };
 

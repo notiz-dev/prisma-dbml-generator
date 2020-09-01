@@ -10,7 +10,7 @@ export async function generate(options: GeneratorOptions) {
     try {
       await mkdir(options.generator.output, { recursive: true });
 
-      // await writeFile('./test.json', JSON.stringify(options.dmmf.datamodel));
+      await writeFile('./test.json', JSON.stringify(options.dmmf.datamodel));
 
       const dbmlSchema = generateDBMLSchema(options.dmmf);
 

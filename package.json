@@ -5,6 +5,7 @@
   "bin": "./dist/generator.js",
   "scripts": {
     "build": "tsc -p .",
+    "dev:watch": "tsc -p . --watch",
     "dev": "tsc -p . && npm run prisma:generate",
     "prisma:save": "npx prisma migrate save --experimental",
     "prisma:up": "npx prisma migrate up --experimental",
