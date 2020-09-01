@@ -8,5 +8,6 @@
     "lib": ["es2019"],
     "strict": true,
     "esModuleInterop": true
-  }
+  },
+  "exclude": ["__tests__"]
 }

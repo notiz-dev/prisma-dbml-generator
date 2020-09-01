@@ -1,6 +1,10 @@
 import { DMMF } from '@prisma/generator-helper';
 
-export function generateRefs(models: DMMF.Model[]): string[] {
+export const oneToOne = '-';
+export const oneToMany = '<';
+export const manyToOne = '>';
+
+export function generateRelations(models: DMMF.Model[]): string[] {
   const refs: string[] = [];
   models.forEach((model) => {
     model.fields
@@ -31,7 +35,7 @@ const getRefOperator = (
 ): string => {
   const model = models.find((model) => model.name === from);
   const field = model?.fields.find((field) => field.type === to);
-  return field?.isList ? '>' : '-';
+  return field?.isList ? manyToOne : oneToOne;
 };
 
 // Composite foreign keys:
