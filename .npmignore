@@ -1,0 +1,11 @@
+# source
+package-lock.json
+.prettierrc
+prisma/
+.vscode/
+.github/
+__tests__
+src/
+
+# misc
+.DS_Store
