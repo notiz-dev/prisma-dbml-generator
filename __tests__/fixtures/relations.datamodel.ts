@@ -1,3 +1,14 @@
+export const datamodelWithoutRelation = /* Prisma */ `
+  model User {
+    id Int @id @default(autoincrement())
+    name String
+  }
+  model Profile {
+    id Int @id @default(autoincrement())
+    name String
+  }
+`;
+
 export const datamodelOneToOne = /* Prisma */ `
   model User {
     id Int @id @default(autoincrement())
