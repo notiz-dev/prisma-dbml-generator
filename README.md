@@ -32,7 +32,7 @@ model User {
   posts     Post[]
   profile   Profile?
   /// user role
-  role      Role
+  role      Role     @default(USER)
 }
 
 /// User profile
@@ -70,7 +70,7 @@ Table User {
   name String
   posts Post
   profile Profile
-  role Role [not null, note: 'user role']
+  role Role [not null, default: 'USER', note: 'user role']
 }
 
 Table Profile {
