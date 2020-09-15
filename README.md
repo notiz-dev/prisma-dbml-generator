@@ -1,6 +1,6 @@
 # Prisma DBML Generator
 
-Automatically generate a [DBML](https://www.dbml.org/home) schema from your Prisma Schema. Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files:
+Automatically generate a [DBML](https://www.dbml.org/home) schema from your Prisma Schema. Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files as Entity-Relationship Diagram:
 
 ![DB Diagram](./dbdiagram.png)
 

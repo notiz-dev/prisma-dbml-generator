@@ -1,3 +1,7 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
 Table User {
   id Int [pk, increment]
   createdAt DateTime [default: `now()`, not null]
