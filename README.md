@@ -59,7 +59,7 @@ enum Role {
 }
 ```
 
-generates the following `schema.dbml` in `prisma/dbml`
+generates the following `schema.dbml` to `prisma/dbml`
 
 ```dbml
 Table User {
