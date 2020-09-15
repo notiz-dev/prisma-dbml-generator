@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/prisma-dbml-generator.svg)](https://www.npmjs.com/package/prisma-dbml-generator)
 
-Automatically generate a [DBML](https://www.dbml.org/home) schema from your Prisma Schema. Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files as Entity-Relationship Diagram:
+Automatically generate a [DBML](https://www.dbml.org/home) schema from your [Prisma](https://github.com/prisma/prisma) Schema. Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files as Entity-Relationship Diagram:
 
 ![DB Diagram](./dbdiagram.png)
 
