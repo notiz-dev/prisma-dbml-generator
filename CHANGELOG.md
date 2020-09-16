@@ -1,3 +1,12 @@
+## [0.2.3](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.2.2...v0.2.3) (2020-09-16)
+
+
+### Bug Fixes
+
+* **default:** table default for string values ([86ee44f](https://github.com/notiz-dev/prisma-dbml-generator/commit/86ee44fa07bf0b5e2eba050afa22f8a13b3a2ee3))
+
+
+
 ## [0.2.2](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.2.0...v0.2.2) (2020-09-15)
 
 
