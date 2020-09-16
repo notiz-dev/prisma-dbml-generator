@@ -46,12 +46,8 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
     columnDefinition.push('not null');
   }
 
-  if (
-    typeof field.default === 'string' ||
-    typeof field.default === 'boolean' ||
-    typeof field.default === 'number'
-  ) {
-    if (field.kind === 'enum') {
+  if (field.hasDefaultValue && typeof field.default != 'object') {
+    if (field.type === 'String' || field.kind === 'enum') {
       columnDefinition.push(`default: '${field.default}'`);
     } else {
       columnDefinition.push(`default: ${field.default}`);
