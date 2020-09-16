@@ -24,7 +24,7 @@ Table Profile {
 
 Table Post {
   id Int [pk, increment]
-  title String [not null]
+  title String [not null, default: '']
   content String
   published Boolean [not null, default: false]
   author User

@@ -36,7 +36,7 @@ model Profile {
 
 model Post {
   id        Int     @id @default(autoincrement())
-  title     String
+  title     String  @default("")
   content   String?
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
