@@ -12,12 +12,14 @@ export async function generate(options: GeneratorOptions) {
   const dbmlFileName =
     options.generator.config.outputName || defaultDBMLFileName;
 
+  const allowManyToMany = options.generator.config.manyToMany || true;
+
   try {
     await mkdir(outputDir, { recursive: true });
 
     // await writeFile('./test.json', JSON.stringify(options.dmmf.datamodel));
 
-    const dbmlSchema = generateDBMLSchema(options.dmmf);
+    const dbmlSchema = generateDBMLSchema(options.dmmf, manyToMany);
 
     await writeFile(join(outputDir, dbmlFileName), dbmlSchema);
   } catch (e) {

@@ -107,10 +107,11 @@ Ref: Post.authorId > User.id
 
 ## Additional Options
 
-| Option       |  Description                       | Type     |  Default      |
-| ------------ | ---------------------------------- | -------- | ------------- |
-| `output`     | Output directory for the DBML file | `string` | `./dbml`      |
-| `outputName` | Name for the DBML file             | `string` | `dbml.schema` |
+| Option       |  Description                       | Type      |  Default      |
+| ------------ | ---------------------------------- | --------- | ------------- |
+| `output`     | Output directory for the DBML file | `string`  | `./dbml`      |
+| `outputName` | Name for the DBML file             | `string`  | `dbml.schema` |
+| `manyToMany` | Create Many-To-Many join table     | `boolean` | `true`        |
 
 Use additional options in the `prisma.schema`
 
