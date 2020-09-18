@@ -35,12 +35,19 @@ model Profile {
 }
 
 model Post {
-  id        Int     @id @default(autoincrement())
-  title     String  @default("")
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  id         Int        @id @default(autoincrement())
+  title      String     @default("")
+  content    String?
+  published  Boolean    @default(false)
+  author     User?      @relation(fields: [authorId], references: [id])
+  authorId   Int?
+  categories Category[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  posts Post[]
 }
 
 /// user role

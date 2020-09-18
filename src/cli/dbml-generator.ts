@@ -11,15 +11,15 @@ export async function generate(options: GeneratorOptions) {
   const outputDir = options.generator.output!;
   const dbmlFileName =
     options.generator.config.outputName || defaultDBMLFileName;
-
-  const allowManyToMany = options.generator.config.manyToMany || true;
+  const allowManyToMany =
+    options.generator.config.manyToMany === 'false' ? false : true;
 
   try {
     await mkdir(outputDir, { recursive: true });
 
     // await writeFile('./test.json', JSON.stringify(options.dmmf.datamodel));
 
-    const dbmlSchema = generateDBMLSchema(options.dmmf, manyToMany);
+    const dbmlSchema = generateDBMLSchema(options.dmmf, allowManyToMany);
 
     await writeFile(join(outputDir, dbmlFileName), dbmlSchema);
   } catch (e) {

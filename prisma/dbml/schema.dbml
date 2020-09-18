@@ -29,6 +29,18 @@ Table Post {
   published Boolean [not null, default: false]
   author User
   authorId Int
+  categories Category
+}
+
+Table Category {
+  id Int [pk, increment]
+  name String [not null]
+  posts Post
+}
+
+Table CategoryToPost {
+  categoryId Int [ref: > Category.id]
+  postId Int [ref: > Post.id]
 }
 
 Enum Role {
