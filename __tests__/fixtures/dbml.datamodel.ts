@@ -79,3 +79,25 @@ export const datamodelDbmlComments = /* Prisma */ `
     USER
   }
 `;
+
+export const datamodelDbmlManyToMany = /* Prisma */ `
+  model Post {
+    id         Int        @id @default(autoincrement())
+    categories Category[]
+  }
+
+  model Category {
+    id    Int    @id @default(autoincrement())
+    posts Post[]
+  }
+
+  model Author {
+    id         Int        @id @default(autoincrement())
+    books Book[]
+  }
+
+  model Book {
+    id    Int    @id @default(autoincrement())
+    authors Author[]
+  }
+`;

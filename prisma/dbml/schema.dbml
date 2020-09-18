@@ -1,0 +1,33 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Post {
+  id Int [pk, increment]
+  categories Category
+}
+
+Table Category {
+  id Int [pk, increment]
+  posts Post
+}
+
+Table Author {
+  id Int [pk, increment]
+  books Book
+}
+
+Table Book {
+  id String [pk]
+  authors Author
+}
+
+Table CategoryToPost {
+  categoryId Int [ref: > Category.id]
+  postId Int [ref: > Post.id]
+}
+
+Table AuthorToBook {
+  bookId String [ref: > Book.id]
+  authorId Int [ref: > Author.id]
+}

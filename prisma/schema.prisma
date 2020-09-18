@@ -11,9 +11,7 @@ generator client {
 }
 
 generator dbml {
-  provider   = "node ./dist/generator.js"
-  output     = "../dbml"
-  outputName = "awesome.dbml"
+  provider = "node ./dist/generator.js"
 }
 
 model User {
