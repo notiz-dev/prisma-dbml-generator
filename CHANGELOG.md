@@ -1,3 +1,20 @@
+# [0.3.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.2.3...v0.3.0) (2020-09-18)
+
+
+### Bug Fixes
+
+* **many-to-many:** disable m-n-table generation ([028d0b6](https://github.com/notiz-dev/prisma-dbml-generator/commit/028d0b6108e11a6d0e5cc8a2f8569fba1682a850))
+
+
+### Features
+
+* **deps:** move @prisma/client to devDeps ([f6ee512](https://github.com/notiz-dev/prisma-dbml-generator/commit/f6ee51211fa78c8d1d851464a6806b0f55f43951))
+* **many-to-many:** generate join table ([f0e2923](https://github.com/notiz-dev/prisma-dbml-generator/commit/f0e29236d712f0bb848bb46d4e9e9c44c101284b))
+* **many-to-many:** option to disable m-n table ([b4615e7](https://github.com/notiz-dev/prisma-dbml-generator/commit/b4615e788f6cb1ffdc1e3296dac0823eb23fde2e))
+* **output-name:** add option for outputName ([a876bec](https://github.com/notiz-dev/prisma-dbml-generator/commit/a876bec62cf7b28fedb96125e179f8b9d550932d))
+
+
+
 ## [0.2.3](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.2.2...v0.2.3) (2020-09-16)
 
 
