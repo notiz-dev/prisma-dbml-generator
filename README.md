@@ -105,6 +105,23 @@ Ref: Post.authorId > User.id
 
 4. [Visualize](https://dbdiagram.io/d) the `schema.dbml`
 
+## Additional Options
+
+| Option       |  Description                       | Type     |  Default      |
+| ------------ | ---------------------------------- | -------- | ------------- |
+| `output`     | Output directory for the DBML file | `string` | `./dbml`      |
+| `outputName` | Name for the DBML file             | `string` | `dbml.schema` |
+
+Use additional options in the `prisma.schema`
+
+```prisma
+generator dbml {
+  provider   = "prisma-dbml-generator"
+  output     = "../dbml"
+  outputName = "awesome.dbml"
+}
+```
+
 ## Development
 
 ```bash
