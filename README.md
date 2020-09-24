@@ -71,6 +71,10 @@ enum Role {
 generates the following `schema.dbml` to `prisma/dbml`
 
 ```dbml
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
 Table User {
   id Int [pk, increment]
   createdAt DateTime [default: `now()`, not null]
@@ -93,11 +97,23 @@ Table Profile {
 
 Table Post {
   id Int [pk, increment]
-  title String [not null]
+  title String [not null, default: '']
   content String
   published Boolean [not null, default: false]
   author User
   authorId Int
+  categories Category
+}
+
+Table Category {
+  id Int [pk, increment]
+  name String [not null]
+  posts Post
+}
+
+Table CategoryToPost {
+  categoryId Int [ref: > Category.id]
+  postId Int [ref: > Post.id]
 }
 
 Enum Role {
