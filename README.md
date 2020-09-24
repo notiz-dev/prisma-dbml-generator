@@ -22,7 +22,7 @@ generator dbml {
 }
 ```
 
-3. Running `npx prisma generate` for the following Prisma schema
+3. Running `npx prisma generate` for the following [schema.prisma](./prisma/schema.prisma)
 
 ```prisma
 model User {
@@ -68,7 +68,7 @@ enum Role {
 }
 ```
 
-generates the following `schema.dbml` to `prisma/dbml`
+generates the following [schema.dbml](./prisma/dbml/schema.dbml) to `prisma/dbml`
 
 ```dbml
 //// ------------------------------------------------------
