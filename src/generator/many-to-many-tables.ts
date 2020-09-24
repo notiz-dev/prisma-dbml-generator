@@ -43,7 +43,7 @@ function generateJoinFields(field: DMMF.Field[], models: DMMF.Model[]): string {
 }
 
 function joinField(field: DMMF.Field, models: DMMF.Model[]): string {
-  return `  ${field.type.toLowerCase()}Id ${getJoinIdType(
+  return `  ${field.name.toLowerCase()}Id ${getJoinIdType(
     field,
     models
   )} [ref: > ${field.type}.${field.relationToFields![0]}]`;

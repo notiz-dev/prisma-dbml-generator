@@ -101,3 +101,11 @@ export const datamodelDbmlManyToMany = /* Prisma */ `
     authors Author[]
   }
 `;
+
+export const datamodelDbmlManyToManySelfRelation = /* Prisma */ `
+  model User {
+    id         Int        @id @default(autoincrement())
+    followers User[] @relation("Followers")
+    following User[] @relation("Followers")
+  }
+`;
