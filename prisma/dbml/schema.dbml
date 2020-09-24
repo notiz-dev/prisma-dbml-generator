@@ -39,8 +39,8 @@ Table Category {
 }
 
 Table CategoryToPost {
-  categoryId Int [ref: > Category.id]
-  postId Int [ref: > Post.id]
+  categoriesId Int [ref: > Category.id]
+  postsId Int [ref: > Post.id]
 }
 
 Enum Role {
