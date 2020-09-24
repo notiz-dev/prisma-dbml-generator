@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.3.0...v0.3.1) (2020-09-24)
+
+
+### Bug Fixes
+
+* **self-relations:** use name for join fields instead of type ([b62dc66](https://github.com/notiz-dev/prisma-dbml-generator/commit/b62dc669d9d04c51058d7c109cc0c71e5c65b245))
+
+
+
 # [0.3.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.2.3...v0.3.0) (2020-09-18)
 
 
