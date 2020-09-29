@@ -152,6 +152,10 @@ generator dbml {
 npm run dev
 ```
 
+## Build Status
+
+![Build and Test CI](https://github.com/notiz-dev/prisma-dbml-generator/workflows/Build%20and%20Test%20CI/badge.svg?branch=master)
+
 ## Helpful
 
 [Prisma Generator](https://github.com/prisma/specs/tree/master/generators)
