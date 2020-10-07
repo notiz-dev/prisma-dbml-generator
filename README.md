@@ -136,7 +136,7 @@ Ref: Post.authorId > User.id
 | `outputName` | Name for the DBML file             | `string`  | `dbml.schema` |
 | `manyToMany` | Create Many-To-Many join table     | `boolean` | `true`        |
 
-Use additional options in the `prisma.schema`
+Use additional options in the `schema.prisma`
 
 ```prisma
 generator dbml {
