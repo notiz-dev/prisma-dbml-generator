@@ -1,3 +1,13 @@
+# [0.4.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.3.1...v0.4.0) (2020-11-19)
+
+
+### Features
+
+* **indexes:** include block level id ([221da9c](https://github.com/notiz-dev/prisma-dbml-generator/commit/221da9c27f44e3e07ff391ee56a88f21a71360b4))
+* **indexes:** include block level unique indexes ([67d8fd7](https://github.com/notiz-dev/prisma-dbml-generator/commit/67d8fd7585ef1194f6e1a70b8b1589bea7dabe9c))
+
+
+
 ## [0.3.1](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.3.0...v0.3.1) (2020-09-24)
 
 
