@@ -150,6 +150,8 @@ generator dbml {
 
 ```bash
 npm run dev
+
+npm test
 ```
 
 ## Build Status
