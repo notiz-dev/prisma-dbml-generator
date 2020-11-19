@@ -28,7 +28,7 @@ model User {
 
 /// User profile
 model Profile {
-  id     Int     @default(autoincrement()) @id
+  id     Int     @id @default(autoincrement())
   bio    String?
   user   User    @relation(fields: [userId], references: [id])
   userId Int     @unique
@@ -48,6 +48,14 @@ model Category {
   id    Int    @id @default(autoincrement())
   name  String
   posts Post[]
+}
+
+model Token {
+  id              Int    @id @default(autoincrement())
+  device          String
+  operatingSystem String
+
+  @@unique([device, operatingSystem])
 }
 
 /// user role
