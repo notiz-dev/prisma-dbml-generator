@@ -1,5 +1,7 @@
 import {
   datamodelSingleTable,
+  datamodelTableWithBlockId,
+  datamodelTableWithBlockIdAndCompositeUnqiue,
   datamodelTableWithOneCompositeUniqueIndex,
   datamodelTableWithSingleCompositeUniqueIndex,
   datamodelTableWithStringDefaults,
@@ -112,6 +114,49 @@ describe('Tables', () => {
   indexes {
     (b, d) [unique]
     (e, c) [unique]
+  }
+}`;
+
+    const enums = generateTables(dmmf.datamodel.models);
+
+    expect(enums.length).toEqual(1);
+    expect(enums[0]).toMatch(expected);
+  });
+
+  test('generate a table with block id', async () => {
+    const dmmf = await generateDMMF(datamodelTableWithBlockId);
+
+    const expected = `Table User {
+  firstName String [not null]
+  lastName String [not null]
+  email String [unique, not null]
+  isAdmin Boolean [not null, default: false]
+
+  indexes {
+    (firstName, lastName) [pk]
+  }
+}`;
+
+    const enums = generateTables(dmmf.datamodel.models);
+
+    expect(enums.length).toEqual(1);
+    expect(enums[0]).toMatch(expected);
+  });
+  test('generate a table with block id and composite unique index', async () => {
+    const dmmf = await generateDMMF(
+      datamodelTableWithBlockIdAndCompositeUnqiue
+    );
+
+    const expected = `Table User {
+  firstName String [not null]
+  lastName String [not null]
+  email String [not null]
+  role String [not null]
+  isAdmin Boolean [not null, default: false]
+
+  indexes {
+    (firstName, lastName) [pk]
+    (email, role) [unique]
   }
 }`;
 

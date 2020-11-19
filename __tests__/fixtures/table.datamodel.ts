@@ -1,5 +1,3 @@
-import { datamodelDbml } from './dbml.datamodel';
-import { datamodelOneToOneAndManyToOne } from './relations.datamodel';
 export const datamodelSingleTable = /* Prisma */ `
   model User {
     id Int @id @default(autoincrement())
@@ -56,5 +54,29 @@ export const datamodelTableWithTwoCompositeUniqueIndex = /* Prisma */ `
 
     @@unique([b, d])
     @@unique([e, c])
+  }
+`;
+
+export const datamodelTableWithBlockId = /* Prisma */ `
+  model User {
+    firstName String
+    lastName  String
+    email     String  @unique
+    isAdmin   Boolean @default(false)
+
+    @@id([firstName, lastName])
+  }
+`;
+
+export const datamodelTableWithBlockIdAndCompositeUnqiue = /* Prisma */ `
+  model User {
+    firstName String
+    lastName  String
+    email     String
+    role      String
+    isAdmin   Boolean @default(false)
+
+    @@id([firstName, lastName])
+    @@unique([email, role])
   }
 `;

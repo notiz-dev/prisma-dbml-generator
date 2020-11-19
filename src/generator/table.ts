@@ -13,16 +13,27 @@ export function generateTables(models: DMMF.Model[]): string[] {
 }
 
 const generateTableIndexes = (model: DMMF.Model): string => {
-  const hasTableIndexes =
-    model.idFields.length > 0 || model.uniqueFields.length > 0;
-  return hasTableIndexes
-    ? `\n\n  ${DBMLKeywords.Indexes} {\n${generateTableUniqueFields(
-        model.uniqueFields
-      )}\n  }`
+  const hasIdFields = model.idFields.length > 0;
+  const hasCompositeUniqueIndex = model.uniqueFields.length > 0;
+  return hasIdFields || hasCompositeUniqueIndex
+    ? `\n\n  ${DBMLKeywords.Indexes} {\n${generateTableBlockId(
+        model.idFields
+      )}${
+        hasIdFields && hasCompositeUniqueIndex ? '\n' : ''
+      }${generateTableCompositeUniqueIndex(model.uniqueFields)}\n  }`
     : '';
 };
 
-const generateTableUniqueFields = (uniqueFields: string[][]): string => {
+const generateTableBlockId = (idFields: string[]): string => {
+  if (idFields.length === 0) {
+    return '';
+  }
+  return `    (${idFields.join(', ')}) [${DBMLKeywords.Pk}]`;
+};
+
+const generateTableCompositeUniqueIndex = (
+  uniqueFields: string[][]
+): string => {
   return uniqueFields
     .map(
       (composite) => `    (${composite.join(', ')}) [${DBMLKeywords.Unique}]`
