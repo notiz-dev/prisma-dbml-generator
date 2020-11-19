@@ -2,16 +2,16 @@ name: Build and Test CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1.4.3
+      - uses: actions/setup-node@v1.4.4
         with:
           node-version: 12
       - run: npm install
