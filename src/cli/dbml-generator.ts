@@ -1,14 +1,20 @@
 import { GeneratorOptions } from '@prisma/generator-helper';
-import { generateDBMLSchema } from '../generator/dbml';
+import { parseEnvValue } from '@prisma/sdk';
 import { promises } from 'fs';
 import { join } from 'path';
+import { generateDBMLSchema } from '../generator/dbml';
 
 const { mkdir, writeFile } = promises;
 
 export const defaultDBMLFileName = 'schema.dbml';
 
 export async function generate(options: GeneratorOptions) {
-  const outputDir = options.generator.output!;
+  const outputDir =
+    // This ensures previous version of prisma are still supported
+    typeof options.generator.output === 'string'
+      ? //@ts-ignore
+        (options.generator.output! as string)
+      : parseEnvValue(options.generator.output!);
   const dbmlFileName =
     options.generator.config.outputName || defaultDBMLFileName;
   const allowManyToMany =

@@ -42,13 +42,13 @@
     "url": "https://github.com/notiz-dev/prisma-dbml-generator/issues"
   },
   "dependencies": {
-    "@prisma/generator-helper": "^2.15.0"
+    "@prisma/generator-helper": "^2.20.0",
+    "@prisma/sdk": "^2.20.0"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.15.0",
-    "@prisma/client": "^2.15.0",
-    "@prisma/sdk": "^2.15.0",
-    "@types/jest": "26.0.20",
+    "prisma": "^2.20.0",
+    "@prisma/client": "^2.20.0",
+    "@types/jest": "^26.0.20",
     "@types/node": "12.19.5",
     "jest": "26.6.3",
     "prettier": "2.2.1",
