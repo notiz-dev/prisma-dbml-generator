@@ -88,7 +88,7 @@ Table User {
   name String
   email String [unique, not null]
   role Role [not null, default: 'USER']
-  posts Post
+  posts Post [not null]
 }
 
 Table Post {
@@ -120,7 +120,7 @@ Ref: Post.authorId > User.id`;
 
 Table User {
   id Int [pk, increment]
-  posts Post
+  posts Post [not null]
   profile Profile
 }
 
@@ -152,22 +152,22 @@ Ref: Post.authorId > User.id`;
 
 Table Post {
   id Int [pk, increment]
-  categories Category
+  categories Category [not null]
 }
 
 Table Category {
   id Int [pk, increment]
-  posts Post
+  posts Post [not null]
 }
 
 Table Author {
   id Int [pk, increment]
-  books Book
+  books Book [not null]
 }
 
 Table Book {
   id Int [pk, increment]
-  authors Author
+  authors Author [not null]
 }
 
 Table CategoryToPost {
@@ -192,22 +192,22 @@ Table AuthorToBook {
 
 Table Post {
   id Int [pk, increment]
-  categories Category
+  categories Category [not null]
 }
 
 Table Category {
   id Int [pk, increment]
-  posts Post
+  posts Post [not null]
 }
 
 Table Author {
   id Int [pk, increment]
-  books Book
+  books Book [not null]
 }
 
 Table Book {
   id Int [pk, increment]
-  authors Author
+  authors Author [not null]
 }`;
 
     const dbml = generateDBMLSchema(dmmf, false);
@@ -222,8 +222,8 @@ Table Book {
 
 Table User {
   id Int [pk, increment]
-  followers User
-  following User
+  followers User [not null]
+  following User [not null]
 }
 
 Table Followers {
