@@ -8,7 +8,7 @@ Table User {
   updatedAt DateTime [not null]
   email String [unique, not null]
   name String
-  posts Post
+  posts Post [not null]
   profile Profile
   role Role [not null, default: 'USER', note: 'user role']
 }
@@ -29,13 +29,13 @@ Table Post {
   published Boolean [not null, default: false]
   author User
   authorId Int
-  categories Category
+  categories Category [not null]
 }
 
 Table Category {
   id Int [pk, increment]
   name String [not null]
-  posts Post
+  posts Post [not null]
 }
 
 Table Token {
