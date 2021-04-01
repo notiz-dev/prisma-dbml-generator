@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.4.0...v0.5.0) (2021-04-01)
+
+
+### Bug Fixes
+
+* add support for prisma ^2.20 ([a280871](https://github.com/notiz-dev/prisma-dbml-generator/commit/a28087125132fde148d5bcebdb836dcff000d5c7))
+
+
+
 # [0.4.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.3.1...v0.4.0) (2020-11-19)
 
 
