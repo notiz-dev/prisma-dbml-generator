@@ -131,11 +131,15 @@ Ref: Post.authorId > User.id
 
 ## Additional Options
 
-| Option       |  Description                       | Type      |  Default      |
-| ------------ | ---------------------------------- | --------- | ------------- |
-| `output`     | Output directory for the DBML file | `string`  | `./dbml`      |
-| `outputName` | Name for the DBML file             | `string`  | `dbml.schema` |
-| `manyToMany` | Create Many-To-Many join table     | `boolean` | `true`        |
+| Option                |  Description                                    | Type      |  Default      |
+| --------------------- | ----------------------------------------------- | --------- | ------------- |
+| `projectDatabaseType` | Project database type for dbdocs                | `string`  | `null`        |
+| `projectName`         | Project name for dbdocs                         | `string`  | `null`        |
+| `projectNote`         | Project note for dbdocs                         | `string`  | `null`        |
+| `projectNotePath`     | Project note path to a markdown file for dbdocs | `string`  | `null`        |
+| `output`              | Output directory for the DBML file              | `string`  | `./dbml`      |
+| `outputName`          | Name for the DBML file                          | `string`  | `dbml.schema` |
+| `manyToMany`          | Create Many-To-Many join table                  | `boolean` | `true`        |
 
 Use additional options in the `schema.prisma`
 
@@ -144,6 +148,9 @@ generator dbml {
   provider   = "prisma-dbml-generator"
   output     = "../dbml"
   outputName = "awesome.dbml"
+  projectName = "Project Name"
+  projectDatabaseType = "PostgreSQL"
+  projectNote = "Test project description"
 }
 ```
 
