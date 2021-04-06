@@ -6,6 +6,8 @@ prisma/
 .github/
 __tests__
 src/
+jest.config.js
+docker-compose.db.yml
 
 # misc
 .DS_Store
