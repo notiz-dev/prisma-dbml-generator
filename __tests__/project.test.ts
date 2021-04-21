@@ -21,7 +21,7 @@ describe('Project', () => {
     const project = generateProject(projectOptions);
 
     const expected =
-      'Project Test Project {\n' +
+      'Project "Test Project" {\n' +
       "  database_type: 'PostgreSQL'\n" +
       "  Note: 'Test project description'\n" +
       '}';
@@ -36,7 +36,7 @@ describe('Project', () => {
     const project = generateProject(projectOptions);
 
     const expected =
-      'Project Test Project {\n' +
+      'Project "Test Project" {\n' +
       "  database_type: 'PostgreSQL'\n" +
       "  Note: '''\n" +
       '    # Test Project Database\n' +

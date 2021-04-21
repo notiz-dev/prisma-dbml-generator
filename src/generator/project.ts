@@ -17,7 +17,11 @@ export function generateProject({
   isMd = false,
 }: ProjectOptions): string[] {
   const projectNote = isMd
-    ? `'''\n` + `    ${note.replace('\n', '\n    ')}  '''`
+    ? `'''\n` +
+      `    ${note
+        .replace(/\n/g, '\n    ')
+        .replace(/(\n\s+\n)/g, '\n\n')
+        .replace(/\s+$/g, '')}\n  '''`
     : `'${note}'`;
   const project = [
     `Project ${name} {\n` +
@@ -46,8 +50,8 @@ export async function getProjectOptions({
   }
 
   return {
-    name: projectName,
-    databaseType: projectDatabaseType,
+    name: projectName && `"${projectName}"`,
+    databaseType: projectDatabaseType || '',
     note: projectNoteMd || projectNote || '', // noteMd takes precedence
     isMd: projectNoteMd !== '',
   };
