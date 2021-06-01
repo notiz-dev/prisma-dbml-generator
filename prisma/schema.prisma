@@ -22,7 +22,7 @@ model User {
   name      String?
   posts     Post[]
   profile   Profile?
-  /// user role
+  /// user's role
   role      Role     @default(USER)
 }
 

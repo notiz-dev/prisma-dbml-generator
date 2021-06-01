@@ -53,7 +53,7 @@ Table User {
   id Int [pk, increment]
   name String [not null]
   profile Profile
-  role Role [not null, default: 'USER', note: 'User Role']
+  role Role [not null, default: 'USER', note: 'User\\'s Role']
 }
 
 Table Profile {
@@ -62,7 +62,7 @@ Table Profile {
   user User [not null]
   userId Int [not null]
 
-  Note: 'User Profile model'
+  Note: 'User\\'s Profile model'
 }
 
 Enum Role {

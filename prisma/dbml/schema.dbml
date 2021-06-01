@@ -10,7 +10,7 @@ Table User {
   name String
   posts Post [not null]
   profile Profile
-  role Role [not null, default: 'USER', note: 'user role']
+  role Role [not null, default: 'USER', note: 'user\'s role']
 }
 
 Table Profile {

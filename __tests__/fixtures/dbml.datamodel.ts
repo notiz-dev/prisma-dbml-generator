@@ -65,9 +65,9 @@ export const datamodelDbmlComments = /* Prisma */ `
     id Int @id @default(autoincrement())
     name String
     profile   Profile?
-    role Role @default(USER) /// User Role
+    role Role @default(USER) /// User's Role
   }
-  /// User Profile model
+  /// User's Profile model
   model Profile {
     id Int @id @default(autoincrement())
     name String
