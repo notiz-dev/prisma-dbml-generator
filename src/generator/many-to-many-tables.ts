@@ -5,7 +5,6 @@ export function generateManyToManyTables(models: DMMF.Model[]): string[] {
   if (manyToManyFields.length === 0) {
     return [];
   }
-
   return generateTables(manyToManyFields, models);
 }
 
@@ -22,6 +21,10 @@ function generateTables(
   const manySecond = manyToManyFields.find(
     (field) => field.relationName === manyFirst.relationName
   )!;
+
+  if (!manySecond) {
+    return manyToManyTables;
+  }
 
   manyToManyTables.push(
     `Table ${manyFirst?.relationName} {\n` +

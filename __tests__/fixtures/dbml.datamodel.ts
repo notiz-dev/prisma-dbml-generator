@@ -109,3 +109,25 @@ export const datamodelDbmlManyToManySelfRelation = /* Prisma */ `
     following User[] @relation("Followers")
   }
 `;
+
+export const datamodelDbmlManyToManyInvalid = /* Prisma */ `
+  model User {
+    id Int @id @default(autoincrement())
+    receivedPosts Post[] @relation("userReceivesPosts")
+  }
+  model Post {
+    id Int @id @default(autoincrement())
+    receivedBy User[] @relation("userReceivesPosts", references: [id])
+  }
+`;
+
+export const datamodelDbmlManyToManyRenameRelation = /* Prisma */ `
+  model User {
+    id Int @id @default(autoincrement())
+    receivedPosts Post[] @relation("userReceivesPosts")
+  }
+  model Post {
+    id Int @id @default(autoincrement())
+    receivedBy User[] @relation("userReceivesPosts")
+  }
+`;
