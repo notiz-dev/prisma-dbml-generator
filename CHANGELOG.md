@@ -1,3 +1,14 @@
+# [0.6.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.6.0-dev.0...v0.6.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* **dbml:** fix md parser ([efb544f](https://github.com/notiz-dev/prisma-dbml-generator/commit/efb544f88cc0a8505538fdb52702d51a7c1518f0))
+* **m-n-relation:** catch invalid m-n-relation ([d5d3494](https://github.com/notiz-dev/prisma-dbml-generator/commit/d5d349423cbf54ebff8778c9cb69da2813ecf867))
+* **note:** escape single quote from documentation, closes [#13](https://github.com/notiz-dev/prisma-dbml-generator/issues/13) ([f78d7dc](https://github.com/notiz-dev/prisma-dbml-generator/commit/f78d7dcd7ad447f376a757d8fa4a767bf837e7ae))
+
+
+
 # [0.5.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.4.0...v0.5.0) (2021-04-01)
 
 
