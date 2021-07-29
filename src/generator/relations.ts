@@ -24,13 +24,19 @@ export function generateRelations(models: DMMF.Model[]): string[] {
           relationTo
         );
 
-        refs.push(
-          `Ref: ${relationFrom}.${combineKeys(
-            field.relationFromFields!
-          )} ${relationOperator} ${relationTo}.${combineKeys(
-            field.relationToFields!!
-          )}`
+        const ref = `Ref: ${relationFrom}.${combineKeys(
+          field.relationFromFields!
+        )} ${relationOperator} ${relationTo}.${combineKeys(
+          field.relationToFields!!
+        )}`;
+
+        const referentialActions = getReferentialActions(
+          models,
+          relationFrom,
+          relationTo
         );
+
+        refs.push(`${ref}${referentialActions}`);
       });
   });
   return refs;
@@ -50,4 +56,23 @@ const getRelationOperator = (
 // Ref: merchant_periods.(merchant_id, country_code) > merchants.(id, country_code)
 const combineKeys = (keys: string[]): string => {
   return keys.length > 1 ? `(${keys.join(', ')})` : keys[0];
+};
+
+const getReferentialActions = (
+  models: DMMF.Model[],
+  from: string,
+  to: string
+): string => {
+  const model = models.find((model) => model.name === from);
+  const field = model?.fields.find((field) => field.type === to);
+  const referentialActions: string[] = [];
+
+  if (field?.relationOnDelete) {
+    referentialActions.push(`delete: ${field.relationOnDelete}`);
+  }
+
+  if (referentialActions.length) {
+    return ' [' + referentialActions.join(', ') + ']';
+  }
+  return '';
 };
