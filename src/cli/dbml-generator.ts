@@ -11,12 +11,7 @@ export const defaultDBMLFileName = 'schema.dbml';
 
 export async function generate(options: GeneratorOptions) {
   const { output, config } = options.generator;
-  const outputDir =
-    // This ensures previous version of prisma are still supported
-    typeof output === 'string'
-      ? //@ts-ignore
-        (output! as string)
-      : parseEnvValue(output!);
+  const outputDir = parseEnvValue(output!);
   const dbmlFileName = config.outputName || defaultDBMLFileName;
   const allowManyToMany = config.manyToMany === 'false' ? false : true;
   const projectOptions = await getProjectOptions(config);
