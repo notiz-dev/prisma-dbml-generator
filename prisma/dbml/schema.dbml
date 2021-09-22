@@ -52,6 +52,6 @@ Table CategoryToPost {
   postsId Int [ref: > Post.id]
 }
 
-Ref: Profile.userId - User.id
+Ref: Profile.userId - User.id [delete: Cascade]
 
-Ref: Post.authorId > User.id
+Ref: Post.authorId > User.id [delete: SetNull]
