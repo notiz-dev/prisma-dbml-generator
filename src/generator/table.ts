@@ -13,28 +13,32 @@ export function generateTables(models: DMMF.Model[]): string[] {
 }
 
 const generateTableIndexes = (model: DMMF.Model): string => {
-  const hasIdFields = model.idFields.length > 0;
-  const hasCompositeUniqueIndex = model.uniqueFields.length > 0;
+  const primaryFields = model.primaryKey?.fields;
+  const hasIdFields = primaryFields && primaryFields.length > 0;
+  const hasCompositeUniqueIndex = hasCompositeUniqueIndices(model.uniqueFields);
   return hasIdFields || hasCompositeUniqueIndex
-    ? `\n\n  ${DBMLKeywords.Indexes} {\n${generateTableBlockId(
-        model.idFields
-      )}${
+    ? `\n\n  ${DBMLKeywords.Indexes} {\n${generateTableBlockId(primaryFields)}${
         hasIdFields && hasCompositeUniqueIndex ? '\n' : ''
       }${generateTableCompositeUniqueIndex(model.uniqueFields)}\n  }`
     : '';
 };
 
-const generateTableBlockId = (idFields: string[]): string => {
-  if (idFields.length === 0) {
+const hasCompositeUniqueIndices = (uniqueFields: string[][]) : boolean => {
+  return uniqueFields.filter(composite => composite.length > 1).length > 0;
+}
+
+const generateTableBlockId = (primaryFields: string[] | undefined): string => {
+  if (primaryFields === undefined || primaryFields.length === 0) {
     return '';
   }
-  return `    (${idFields.join(', ')}) [${DBMLKeywords.Pk}]`;
+  return `    (${primaryFields.join(', ')}) [${DBMLKeywords.Pk}]`;
 };
 
 const generateTableCompositeUniqueIndex = (
   uniqueFields: string[][]
 ): string => {
   return uniqueFields
+    .filter((composite) => composite.length > 1)
     .map(
       (composite) => `    (${composite.join(', ')}) [${DBMLKeywords.Unique}]`
     )
@@ -56,7 +60,7 @@ const generateFields = (fields: DMMF.Field[]): string => {
 };
 
 const generateColumnDefinition = (field: DMMF.Field): string => {
-  const columnDefinition = [];
+  const columnDefinition: string[] = [];
   if (field.isId) {
     columnDefinition.push(DBMLKeywords.Pk);
   }

@@ -20,10 +20,10 @@ describe('Tables', () => {
   name String [not null]
   age Int
 }`;
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 
   test('generate a table with empty string default', async () => {
@@ -34,10 +34,10 @@ describe('Tables', () => {
   title String [not null, default: '']
   color String [not null, default: 'blue']
 }`;
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 
   test('generate a table with single composite unique index', async () => {
@@ -47,17 +47,13 @@ describe('Tables', () => {
 
     const expected = `Table A {
   id Int [pk, increment]
-  b String [not null]
-
-  indexes {
-    (b) [unique]
-  }
+  b String [unique, not null]
 }`;
 
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 
   test('generate a table with three fields as composite unique index', async () => {
@@ -76,10 +72,10 @@ describe('Tables', () => {
   }
 }`;
 
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 
   test('generate a table with one composite unique index', async () => {
@@ -95,10 +91,10 @@ describe('Tables', () => {
   }
 }`;
 
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 
   test('generate a table with two composite unique index', async () => {
@@ -117,10 +113,10 @@ describe('Tables', () => {
   }
 }`;
 
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 
   test('generate a table with block id', async () => {
@@ -137,10 +133,10 @@ describe('Tables', () => {
   }
 }`;
 
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
   test('generate a table with block id and composite unique index', async () => {
     const dmmf = await generateDMMF(
@@ -160,9 +156,9 @@ describe('Tables', () => {
   }
 }`;
 
-    const enums = generateTables(dmmf.datamodel.models);
+    const tables = generateTables(dmmf.datamodel.models);
 
-    expect(enums.length).toEqual(1);
-    expect(enums[0]).toMatch(expected);
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
   });
 });

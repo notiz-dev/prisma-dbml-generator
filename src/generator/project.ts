@@ -41,11 +41,11 @@ export async function getProjectOptions({
   let projectNoteMd = '';
 
   if (projectNotePath) {
+    const fullPath = `${process.cwd()}/${projectNotePath}`;
     try {
-      const fullPath = `${process.cwd()}/${projectNotePath}`;
       projectNoteMd = await readFile(fullPath, 'utf-8');
     } catch (e) {
-      console.log(`Error: file not found: ${e.path}`);
+      console.log(`❌ Error: project note markdown file not found: ${fullPath}`);
     }
   }
 

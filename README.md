@@ -9,6 +9,11 @@ Automatically generate a [DBML](https://www.dbml.org/home) schema from your [Pri
 
 ## Getting started
 
+| Prisma       | prisma-dbml-generator                                                            |
+| ------------ | -------------------------------------------------------------------------------- |
+| >=[2.29.0]() |  [0.7.0](https://github.com/notiz-dev/prisma-dbml-generator/releases/tag/v0.7.0) |
+|  <2.29.0     |  [0.6.0](https://github.com/notiz-dev/prisma-dbml-generator/releases/tag/v0.6.0) |
+
 1. Install this generator:
 
 ```bash
