@@ -2,12 +2,12 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgres"
-  url      = env("POSTGRESQL_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
 }
 
 generator dbml {
@@ -22,15 +22,13 @@ model User {
   name      String?
   posts     Post[]
   profile   Profile?
-  /// user's role
-  role      Role     @default(USER)
 }
 
 /// User profile
 model Profile {
   id     Int     @id @default(autoincrement())
   bio    String?
-  user   User    @relation(fields: [userId], references: [id])
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId Int     @unique
 }
 
@@ -39,7 +37,7 @@ model Post {
   title      String     @default("")
   content    String?
   published  Boolean    @default(false)
-  author     User?      @relation(fields: [authorId], references: [id])
+  author     User?      @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId   Int?
   categories Category[]
 }
@@ -56,10 +54,4 @@ model Token {
   operatingSystem String
 
   @@unique([device, operatingSystem])
-}
-
-/// user role
-enum Role {
-  ADMIN /// allowed to do everything
-  USER
 }

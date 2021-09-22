@@ -131,3 +131,21 @@ export const datamodelDbmlManyToManyRenameRelation = /* Prisma */ `
     receivedBy User[] @relation("userReceivesPosts")
   }
 `;
+
+export const datamodelDbmlReferentialActions = /* Prisma */ `
+  model User {
+    id Int @id @default(autoincrement())
+    profile Profile? 
+    posts Post[]
+  }
+  model Profile {
+    id Int @id @default(autoincrement())
+    user   User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    userId Int     @unique
+  }
+  model Post {
+    id Int @id @default(autoincrement())
+    author     User?      @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+    authorId   Int?
+  }
+`;

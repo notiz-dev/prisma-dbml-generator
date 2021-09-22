@@ -1,4 +1,4 @@
 node_modules
 dist
-prisma/dev.sqlite
+prisma/dev.db*
 .env

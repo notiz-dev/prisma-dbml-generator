@@ -10,7 +10,6 @@ Table User {
   name String
   posts Post [not null]
   profile Profile
-  role Role [not null, default: 'USER', note: 'user\'s role']
 }
 
 Table Profile {
@@ -53,11 +52,6 @@ Table CategoryToPost {
   postsId Int [ref: > Post.id]
 }
 
-Enum Role {
-  ADMIN
-  USER
-}
+Ref: Profile.userId - User.id [delete: Cascade]
 
-Ref: Profile.userId - User.id
-
-Ref: Post.authorId > User.id
+Ref: Post.authorId > User.id [delete: SetNull]
