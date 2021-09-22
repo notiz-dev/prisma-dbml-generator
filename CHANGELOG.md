@@ -1,3 +1,12 @@
+# [0.8.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.7.0...v0.8.0) (2021-09-22)
+
+
+### Features
+
+* **prisma:** update to prisma@3.0.2, closes [#20](https://github.com/notiz-dev/prisma-dbml-generator/issues/20) ([74b492e](https://github.com/notiz-dev/prisma-dbml-generator/commit/74b492e377b6b5c2bfa2022fb5f0a3ddf3de0009))
+
+
+
 # [0.7.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.6.0...v0.7.0) (2021-08-11)
 
 ### BREAKING CHANGES
