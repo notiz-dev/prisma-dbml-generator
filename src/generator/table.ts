@@ -60,7 +60,7 @@ const generateFields = (fields: DMMF.Field[]): string => {
 };
 
 const generateColumnDefinition = (field: DMMF.Field): string => {
-  const columnDefinition = [];
+  const columnDefinition: string[] = [];
   if (field.isId) {
     columnDefinition.push(DBMLKeywords.Pk);
   }
