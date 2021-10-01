@@ -1,3 +1,12 @@
+## [0.8.1](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.8.0...v0.8.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* **default:** add quotes around json default, closes [#22](https://github.com/notiz-dev/prisma-dbml-generator/issues/22) ([b848d1c](https://github.com/notiz-dev/prisma-dbml-generator/commit/b848d1c25541ed9bd24dc28726a3ea7cf7961b68))
+
+
+
 # [0.8.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.7.0...v0.8.0) (2021-09-22)
 
 
