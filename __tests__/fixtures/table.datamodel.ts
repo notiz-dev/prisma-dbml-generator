@@ -80,3 +80,10 @@ export const datamodelTableWithBlockIdAndCompositeUnqiue = /* Prisma */ `
     @@unique([email, role])
   }
 `;
+
+export const datamodelTableWithJsonDefault = /* Prisma */ `
+  model Example {
+    id        String @id @default(uuid())
+    jsonField Json   @default("{\\"example\\": 0.7}")
+  }
+`;

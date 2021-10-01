@@ -2,6 +2,7 @@ import {
   datamodelSingleTable,
   datamodelTableWithBlockId,
   datamodelTableWithBlockIdAndCompositeUnqiue,
+  datamodelTableWithJsonDefault,
   datamodelTableWithOneCompositeUniqueIndex,
   datamodelTableWithSingleCompositeUniqueIndex,
   datamodelTableWithStringDefaults,
@@ -138,6 +139,7 @@ describe('Tables', () => {
     expect(tables.length).toEqual(1);
     expect(tables[0]).toMatch(expected);
   });
+
   test('generate a table with block id and composite unique index', async () => {
     const dmmf = await generateDMMF(
       datamodelTableWithBlockIdAndCompositeUnqiue
@@ -154,6 +156,22 @@ describe('Tables', () => {
     (firstName, lastName) [pk]
     (email, role) [unique]
   }
+}`;
+
+    const tables = generateTables(dmmf.datamodel.models);
+
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
+  });
+
+  test('generate a table with json default', async () => {
+    const dmmf = await generateDMMF(
+      datamodelTableWithJsonDefault
+    );
+
+    const expected = `Table Example {
+  id String [pk]
+  jsonField Json [not null, default: '{"example": 0.7}']
 }`;
 
     const tables = generateTables(dmmf.datamodel.models);

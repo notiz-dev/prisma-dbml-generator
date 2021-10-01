@@ -1,4 +1,4 @@
-import { DBMLKeywords } from './../keywords';
+import { DBMLKeywords, PrismaScalars } from './../keywords';
 import { DMMF } from '@prisma/generator-helper';
 
 export function generateTables(models: DMMF.Model[]): string[] {
@@ -23,9 +23,9 @@ const generateTableIndexes = (model: DMMF.Model): string => {
     : '';
 };
 
-const hasCompositeUniqueIndices = (uniqueFields: string[][]) : boolean => {
-  return uniqueFields.filter(composite => composite.length > 1).length > 0;
-}
+const hasCompositeUniqueIndices = (uniqueFields: string[][]): boolean => {
+  return uniqueFields.filter((composite) => composite.length > 1).length > 0;
+};
 
 const generateTableBlockId = (primaryFields: string[] | undefined): string => {
   if (primaryFields === undefined || primaryFields.length === 0) {
@@ -82,7 +82,11 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
   }
 
   if (field.hasDefaultValue && typeof field.default != 'object') {
-    if (field.type === 'String' || field.kind === 'enum') {
+    if (
+      field.type === PrismaScalars.String ||
+      field.type === PrismaScalars.Json ||
+      field.kind === 'enum'
+    ) {
       columnDefinition.push(`${DBMLKeywords.Default}: '${field.default}'`);
     } else {
       columnDefinition.push(`${DBMLKeywords.Default}: ${field.default}`);

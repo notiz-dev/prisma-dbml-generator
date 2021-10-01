@@ -8,3 +8,15 @@ export enum DBMLKeywords {
   Pk = 'pk',
   Indexes = 'indexes',
 }
+
+export enum PrismaScalars {
+  String = 'String',
+  Boolean = 'Boolean',
+  Int = 'Int',
+  Float = 'Float',
+  DateTime = 'DateTime',
+  Json = 'Json',
+  BigInt = 'BigInt',
+  Decimal = 'Decimal',
+  Bytes = 'Bytes',
+}
