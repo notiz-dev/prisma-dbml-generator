@@ -8,6 +8,7 @@ __tests__
 src/
 jest.config.js
 docker-compose.db.yml
+.env
 
 # misc
 .DS_Store
