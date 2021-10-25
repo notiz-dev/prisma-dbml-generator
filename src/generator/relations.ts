@@ -67,8 +67,9 @@ const getReferentialActions = (
   const field = model?.fields.find((field) => field.type === to);
   const referentialActions: string[] = [];
 
+  console.log(field)
   if (field?.relationOnDelete) {
-    referentialActions.push(`delete: ${field.relationOnDelete}`);
+    referentialActions.push(`delete: ${referentialActionsMap.get(field.relationOnDelete) || field.relationOnDelete}`);
   }
 
   if (referentialActions.length) {
@@ -76,3 +77,11 @@ const getReferentialActions = (
   }
   return '';
 };
+
+const referentialActionsMap = new Map(Object.entries({
+  Cascade: 'Cascade',
+  Restrict: 'Restrict',
+  NoAction: 'No Action',
+  SetNull: 'Set Null',
+  SetDefault: 'Set Default',
+}));

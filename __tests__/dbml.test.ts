@@ -328,7 +328,7 @@ Table Post {
 
 Ref: Profile.userId - User.id [delete: Cascade]
 
-Ref: Post.authorId > User.id [delete: SetNull]`;
+Ref: Post.authorId > User.id [delete: Set Null]`;
 
     const dbml = generateDBMLSchema(dmmf);
 
