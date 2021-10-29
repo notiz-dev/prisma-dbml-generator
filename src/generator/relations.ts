@@ -67,7 +67,6 @@ const getReferentialActions = (
   const field = model?.fields.find((field) => field.type === to);
   const referentialActions: string[] = [];
 
-  console.log(field)
   if (field?.relationOnDelete) {
     referentialActions.push(`delete: ${referentialActionsMap.get(field.relationOnDelete) || field.relationOnDelete}`);
   }
