@@ -1,3 +1,12 @@
+## [0.8.2](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.8.1...v0.8.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* **referential-actions-map:** add map between prisma and DBML referential actions ([#25](https://github.com/notiz-dev/prisma-dbml-generator/issues/25)) ([913adc1](https://github.com/notiz-dev/prisma-dbml-generator/commit/913adc129cbb542a243bad3142901c1cf1b8bc5f))
+
+
+
 ## [0.8.1](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.8.0...v0.8.1) (2021-10-01)
 
 
