@@ -81,6 +81,14 @@ export const datamodelTableWithBlockIdAndCompositeUnqiue = /* Prisma */ `
   }
 `;
 
+export const datamodelTableWithMultiQuoteComment = /* Prisma */ `
+  model Example {
+    id        String @id @default(uuid())
+    /// @FieldType({ name: 'Scalars.GraphQLBigInt', from: 'graphql-scalars', input: true, output: true })
+    serial    BigInt   @default(0)
+  }
+`;
+
 export const datamodelTableWithJsonDefault = /* Prisma */ `
   model Example {
     id        String @id @default(uuid())

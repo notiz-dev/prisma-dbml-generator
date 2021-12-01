@@ -46,7 +46,7 @@ const generateTableCompositeUniqueIndex = (
 };
 
 const generateTableDocumentation = (model: DMMF.Model): string => {
-  const doc = model.documentation?.replace("'", "\\'");
+  const doc = model.documentation?.replace(/'/g, "\\'");
   return doc ? `\n\n  Note: '${doc}'` : '';
 };
 
@@ -95,7 +95,7 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
 
   if (field.documentation) {
     columnDefinition.push(
-      `${DBMLKeywords.Note}: '${field.documentation.replace("'", "\\'")}'`
+      `${DBMLKeywords.Note}: '${field.documentation.replace(/'/g, "\\'")}'`
     );
   }
 
