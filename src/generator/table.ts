@@ -46,7 +46,7 @@ const generateTableCompositeUniqueIndex = (
 };
 
 const generateTableDocumentation = (model: DMMF.Model): string => {
-  const doc = model.documentation?.replace("'", "\\'");
+  const doc = model.documentation?.replace(/'/g, "\\'");
   return doc ? `\n\n  Note: '${doc}'` : '';
 };
 
