@@ -1,3 +1,10 @@
+## [0.8.3](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.8.2...v0.8.3) (2021-12-01)
+
+### Bug Fixes 
+
+* **comments**: fix multiple quotes in comments ([#27](https://github.com/notiz-dev/prisma-dbml-generator/pull/27))
+
+
 ## [0.8.2](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.8.1...v0.8.2) (2021-11-16)
 
 
