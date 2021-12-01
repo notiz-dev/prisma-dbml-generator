@@ -8,6 +8,7 @@ import {
   datamodelTableWithStringDefaults,
   datamodelTableWithThreeFieldsCompositeUniqueIndex,
   datamodelTableWithTwoCompositeUniqueIndex,
+  datamodelTableWithMultiQuoteComment,
 } from './fixtures/table.datamodel';
 import { generateDMMF } from './utils/generateDMMF';
 import { generateTables } from '../src/generator/table';
@@ -164,6 +165,23 @@ describe('Tables', () => {
     expect(tables[0]).toMatch(expected);
   });
 
+    test('generate a table with comment with multiple quotes', async () => {
+    const dmmf = await generateDMMF(
+      datamodelTableWithMultiQuoteComment
+    );
+
+    const expected = `Table Example {
+  id String [pk]
+  serial BigInt [not null, note: '@FieldType({ name: \'Scalars.GraphQLBigInt\', from: \'graphql-scalars\', input: true, output: true })']
+}`;
+
+    const tables = generateTables(dmmf.datamodel.models);
+
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
+  });
+
+  
   test('generate a table with json default', async () => {
     const dmmf = await generateDMMF(
       datamodelTableWithJsonDefault
