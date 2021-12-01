@@ -95,7 +95,7 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
 
   if (field.documentation) {
     columnDefinition.push(
-      `${DBMLKeywords.Note}: '${field.documentation.replace("'", "\\'")}'`
+      `${DBMLKeywords.Note}: '${field.documentation.replace(/'/g, "\\'")}'`
     );
   }
 
