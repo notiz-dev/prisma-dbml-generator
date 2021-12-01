@@ -172,7 +172,7 @@ describe('Tables', () => {
 
     const expected = `Table Example {
   id String [pk]
-  serial BigInt [not null, note: '@FieldType({ name: \'Scalars.GraphQLBigInt\', from: \'graphql-scalars\', input: true, output: true })']
+  serial BigInt [not null, default: 0, note: '@FieldType({ name: \'Scalars.GraphQLBigInt\', from: \'graphql-scalars\', input: true, output: true })']
 }`;
 
     const tables = generateTables(dmmf.datamodel.models);
