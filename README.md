@@ -5,14 +5,14 @@
 
 Automatically generate a [DBML](https://www.dbml.org/home) schema from your [Prisma](https://github.com/prisma/prisma) Schema. Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files as Entity-Relationship Diagram:
 
-![DB Diagram](./dbdiagram.png)
+![DB Diagram](https://raw.githubusercontent.com/notiz-dev/prisma-dbml-generator/main/dbdiagram.png)
 
 ## Getting started
 
-| Prisma       | prisma-dbml-generator                                                            |
-| ------------ | -------------------------------------------------------------------------------- |
-| >=[2.29.0]() |  [0.7.0](https://github.com/notiz-dev/prisma-dbml-generator/releases/tag/v0.7.0) |
-|  <2.29.0     |  [0.6.0](https://github.com/notiz-dev/prisma-dbml-generator/releases/tag/v0.6.0) |
+| Prisma   | prisma-dbml-generator                                                            |
+| -------- | -------------------------------------------------------------------------------- |
+| >=2.29.0 |  [0.7.0](https://github.com/notiz-dev/prisma-dbml-generator/releases/tag/v0.7.0) |
+|  <2.29.0 |  [0.6.0](https://github.com/notiz-dev/prisma-dbml-generator/releases/tag/v0.6.0) |
 
 1. Install this generator:
 
@@ -28,7 +28,7 @@ generator dbml {
 }
 ```
 
-3. Running `npx prisma generate` for the following [schema.prisma](./prisma/schema.prisma)
+3. Running `npx prisma generate` for the following [schema.prisma](https://github.com/notiz-dev/prisma-dbml-generator/blob/main/prisma/schema.prisma)
 
 ```prisma
 model User {
@@ -74,7 +74,7 @@ enum Role {
 }
 ```
 
-generates the following [schema.dbml](./prisma/dbml/schema.dbml) to `prisma/dbml`
+generates the following [schema.dbml](https://github.com/notiz-dev/prisma-dbml-generator/blob/main/prisma/dbml/schema.dbml) to `prisma/dbml`
 
 ```dbml
 //// ------------------------------------------------------
