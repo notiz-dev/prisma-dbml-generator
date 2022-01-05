@@ -9,6 +9,7 @@ import {
   datamodelTableWithThreeFieldsCompositeUniqueIndex,
   datamodelTableWithTwoCompositeUniqueIndex,
   datamodelTableWithMultiQuoteComment,
+  datamodelTableWithPrimitiveLists,
 } from './fixtures/table.datamodel';
 import { generateDMMF } from './utils/generateDMMF';
 import { generateTables } from '../src/generator/table';
@@ -165,7 +166,7 @@ describe('Tables', () => {
     expect(tables[0]).toMatch(expected);
   });
 
-    test('generate a table with comment with multiple quotes', async () => {
+  test('generate a table with comment with multiple quotes', async () => {
     const dmmf = await generateDMMF(
       datamodelTableWithMultiQuoteComment
     );
@@ -181,7 +182,6 @@ describe('Tables', () => {
     expect(tables[0]).toMatch(expected);
   });
 
-  
   test('generate a table with json default', async () => {
     const dmmf = await generateDMMF(
       datamodelTableWithJsonDefault
@@ -193,6 +193,21 @@ describe('Tables', () => {
 }`;
 
     const tables = generateTables(dmmf.datamodel.models);
+
+    expect(tables.length).toEqual(1);
+    expect(tables[0]).toMatch(expected);
+  });
+
+  test('generate a table with primitive lists', async () => {
+    const dmmf = await generateDMMF(datamodelTableWithPrimitiveLists);
+
+    const tables = generateTables(dmmf.datamodel.models);
+
+    const expected = `Table Example {
+  id String [pk]
+  keywords String[] [not null]
+  timestamps Int[] [not null]
+}`;
 
     expect(tables.length).toEqual(1);
     expect(tables[0]).toMatch(expected);

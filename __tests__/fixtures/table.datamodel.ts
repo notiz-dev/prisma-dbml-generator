@@ -95,3 +95,16 @@ export const datamodelTableWithJsonDefault = /* Prisma */ `
     jsonField Json   @default("{\\"example\\": 0.7}")
   }
 `;
+
+export const datamodelTableWithPrimitiveLists = /* Prisma */ `
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
+
+  model Example {
+    id String @id @default(uuid())
+    keywords String[]
+    timestamps Int[]
+  }
+`;

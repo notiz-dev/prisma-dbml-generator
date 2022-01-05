@@ -52,10 +52,12 @@ const generateTableDocumentation = (model: DMMF.Model): string => {
 
 const generateFields = (fields: DMMF.Field[]): string => {
   return fields
-    .map(
-      (field) =>
-        `  ${field.name} ${field.type}${generateColumnDefinition(field)}`
-    )
+    .map((field) => {
+      const fieldType =
+        field.isList && !field.relationName ? `${field.type}[]` : field.type;
+
+      return `  ${field.name} ${fieldType}${generateColumnDefinition(field)}`;
+    })
     .join('\n');
 };
 
