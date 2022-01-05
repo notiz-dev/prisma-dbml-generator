@@ -103,7 +103,7 @@ export const datamodelTableWithPrimitiveLists = /* Prisma */ `
   }
 
   model Example {
-    id        String @id @default(uuid())
+    id String @id @default(uuid())
     keywords String[]
     timestamps Int[]
   }
