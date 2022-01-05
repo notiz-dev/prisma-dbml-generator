@@ -54,7 +54,7 @@ const generateFields = (fields: DMMF.Field[]): string => {
   return fields
     .map((field) => {
       const fieldType =
-        field.isList && !field.relationName ? field.type + '[]' : field.type;
+        field.isList && !field.relationName ? `${field.type}[]` : field.type;
 
       return `  ${field.name} ${fieldType}${generateColumnDefinition(field)}`;
     })
