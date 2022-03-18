@@ -14,6 +14,7 @@ export async function generate(options: GeneratorOptions) {
   const outputDir = parseEnvValue(output!);
   const dbmlFileName = config.outputName || defaultDBMLFileName;
   const allowManyToMany = config.manyToMany === 'false' ? false : true;
+  const mapToDbSchema = config.mapToDbSchema === 'false' ? false: true;
   const projectOptions = await getProjectOptions(config);
 
   try {
@@ -24,6 +25,7 @@ export async function generate(options: GeneratorOptions) {
 
     const dbmlSchema = generateDBMLSchema(
       options.dmmf,
+      mapToDbSchema,
       allowManyToMany,
       projectOptions
     );

@@ -1,15 +1,25 @@
 import { DBMLKeywords, PrismaScalars } from './../keywords';
 import { DMMF } from '@prisma/generator-helper';
 
-export function generateTables(models: DMMF.Model[]): string[] {
-  return models.map(
-    (model) =>
-      `${DBMLKeywords.Table} ${model.name} {\n` +
+export function generateTables(
+  models: DMMF.Model[],
+  mapToDbSchema: boolean
+): string[] {
+  return models.map((model) => {
+    let modelName = model.name;
+
+    if (mapToDbSchema && model.dbName) {
+      modelName = model.dbName;
+    }
+
+    return (
+      `${DBMLKeywords.Table} ${modelName} {\n` +
       generateFields(model.fields) +
       generateTableIndexes(model) +
       generateTableDocumentation(model) +
       '\n}'
-  );
+    );
+  });
 }
 
 const generateTableIndexes = (model: DMMF.Model): string => {

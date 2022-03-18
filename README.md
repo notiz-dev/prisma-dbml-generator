@@ -145,6 +145,7 @@ Ref: Post.authorId > User.id
 | `output`              | Output directory for the DBML file              | `string`  | `./dbml`      |
 | `outputName`          | Name for the DBML file                          | `string`  | `dbml.schema` |
 | `manyToMany`          | Create Many-To-Many join table                  | `boolean` | `true`        |
+| `mapToDbSchema`       | Use mapped table name                           | `boolean` | `true`        |
 
 Use additional options in the `schema.prisma`
 
