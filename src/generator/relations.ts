@@ -82,7 +82,6 @@ const getReferentialActions = (
   return '';
 };
 
-
 enum ReferentialAction {
   Cascade = 'Cascade',
   Restrict = 'Restrict',

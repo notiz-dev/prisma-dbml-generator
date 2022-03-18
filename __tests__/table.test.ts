@@ -167,9 +167,7 @@ describe('Tables', () => {
   });
 
   test('generate a table with comment with multiple quotes', async () => {
-    const dmmf = await generateDMMF(
-      datamodelTableWithMultiQuoteComment
-    );
+    const dmmf = await generateDMMF(datamodelTableWithMultiQuoteComment);
 
     const expected = `Table Example {
   id String [pk]
@@ -183,9 +181,7 @@ describe('Tables', () => {
   });
 
   test('generate a table with json default', async () => {
-    const dmmf = await generateDMMF(
-      datamodelTableWithJsonDefault
-    );
+    const dmmf = await generateDMMF(datamodelTableWithJsonDefault);
 
     const expected = `Table Example {
   id String [pk]
