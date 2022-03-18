@@ -3,7 +3,7 @@ import { DMMF } from '@prisma/generator-helper';
 
 export function generateTables(
   models: DMMF.Model[],
-  mapToDbSchema: boolean
+  mapToDbSchema: boolean = false
 ): string[] {
   return models.map((model) => {
     let modelName = model.name;

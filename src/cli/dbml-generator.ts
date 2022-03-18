@@ -25,8 +25,8 @@ export async function generate(options: GeneratorOptions) {
 
     const dbmlSchema = generateDBMLSchema(
       options.dmmf,
-      mapToDbSchema,
       allowManyToMany,
+      mapToDbSchema,
       projectOptions
     );
 
