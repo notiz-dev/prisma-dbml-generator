@@ -19,6 +19,7 @@ export async function generate(options: GeneratorOptions) {
   try {
     await mkdir(outputDir, { recursive: true });
 
+    // for debugging dmmf schema
     // await writeFile('./test.json', JSON.stringify(options.dmmf.datamodel));
 
     const dbmlSchema = generateDBMLSchema(
