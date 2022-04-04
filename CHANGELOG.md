@@ -1,3 +1,11 @@
+# [0.9.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.9.0-dev.1...v0.9.0) (2022-04-04)
+
+### Features
+
+- **primitive list**: add support for primitive list ([30](https://github.com/notiz-dev/prisma-dbml-generator/pull/30))
+- add map db name option ([50ef8cf](https://github.com/notiz-dev/prisma-dbml-generator/commit/50ef8cf498fff7d703ad1ae420b56cfbabdcdbff)), #18 
+
+
 ## [0.8.3](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.8.2...v0.8.3) (2021-12-01)
 
 ### Bug Fixes 
