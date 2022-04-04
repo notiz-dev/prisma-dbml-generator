@@ -17,7 +17,7 @@
     "prisma:generate": "npx prisma generate",
     "docker:db": "docker-compose -f docker-compose.db.yml up -d",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "rocket": "npm run build && npm publish --tag dev",
+    "rocket": "npm run build && npm publish",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
