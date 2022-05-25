@@ -1,10 +1,14 @@
 import { DMMF } from '@prisma/generator-helper';
+import { getModelByType } from './model';
 
 export const oneToOne = '-';
 export const oneToMany = '<';
 export const manyToOne = '>';
 
-export function generateRelations(models: DMMF.Model[]): string[] {
+export function generateRelations(
+  models: DMMF.Model[],
+  mapToDbSchema: boolean = false
+): string[] {
   const refs: string[] = [];
   models.forEach((model) => {
     model.fields
@@ -24,9 +28,16 @@ export function generateRelations(models: DMMF.Model[]): string[] {
           relationTo
         );
 
-        const ref = `Ref: ${relationFrom}.${combineKeys(
+        const relationFormName =
+          mapToDbSchema && model.dbName ? model.dbName : model.name;
+
+        const relationToName = mapToDbSchema
+          ? getModelByType(models, relationTo)?.dbName || relationTo
+          : relationTo;
+
+        const ref = `Ref: ${relationFormName}.${combineKeys(
           field.relationFromFields!
-        )} ${relationOperator} ${relationTo}.${combineKeys(
+        )} ${relationOperator} ${relationToName}.${combineKeys(
           field.relationToFields!!
         )}`;
 

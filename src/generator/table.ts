@@ -1,5 +1,6 @@
 import { DBMLKeywords, PrismaScalars } from './../keywords';
 import { DMMF } from '@prisma/generator-helper';
+import { getModelByType } from './model';
 
 export function generateTables(
   models: DMMF.Model[],
@@ -14,7 +15,7 @@ export function generateTables(
 
     return (
       `${DBMLKeywords.Table} ${modelName} {\n` +
-      generateFields(model.fields) +
+      generateFields(model.fields, models, mapToDbSchema) +
       generateTableIndexes(model) +
       generateTableDocumentation(model) +
       '\n}'
@@ -60,11 +61,21 @@ const generateTableDocumentation = (model: DMMF.Model): string => {
   return doc ? `\n\n  Note: '${doc}'` : '';
 };
 
-const generateFields = (fields: DMMF.Field[]): string => {
+const generateFields = (
+  fields: DMMF.Field[],
+  models: DMMF.Model[],
+  mapToDbSchema: boolean = false
+): string => {
   return fields
     .map((field) => {
+      const relationToName = mapToDbSchema
+        ? getModelByType(models, field.type)?.dbName || field.type
+        : field.type;
+
       const fieldType =
-        field.isList && !field.relationName ? `${field.type}[]` : field.type;
+        field.isList && !field.relationName
+          ? `${relationToName}[]`
+          : relationToName;
 
       return `  ${field.name} ${fieldType}${generateColumnDefinition(field)}`;
     })

@@ -17,10 +17,10 @@ export function generateDBMLSchema(
 ): string {
   const tables = generateTables(dmmf.datamodel.models, mapToDbSchema);
   const manyToManyTables = allowManyToMany
-    ? generateManyToManyTables(dmmf.datamodel.models)
+    ? generateManyToManyTables(dmmf.datamodel.models, mapToDbSchema)
     : [];
   const enums = generateEnums(dmmf.datamodel.enums);
-  const refs = generateRelations(dmmf.datamodel.models);
+  const refs = generateRelations(dmmf.datamodel.models, mapToDbSchema);
   const project = projectOptions ? generateProject(projectOptions) : [];
 
   return [

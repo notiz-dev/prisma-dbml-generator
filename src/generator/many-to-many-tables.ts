@@ -1,17 +1,22 @@
+import { getModelByType } from './model';
 import { DMMF } from '@prisma/generator-helper';
 
-export function generateManyToManyTables(models: DMMF.Model[]): string[] {
+export function generateManyToManyTables(
+  models: DMMF.Model[],
+  mapToDbSchema: boolean = false
+): string[] {
   const manyToManyFields = filterManyToManyRelationFields(models);
   if (manyToManyFields.length === 0) {
     return [];
   }
-  return generateTables(manyToManyFields, models);
+  return generateTables(manyToManyFields, models, [], mapToDbSchema);
 }
 
 function generateTables(
   manyToManyFields: DMMF.Field[],
   models: DMMF.Model[],
-  manyToManyTables: string[] = []
+  manyToManyTables: string[] = [],
+  mapToDbSchema: boolean = false
 ): string[] {
   const manyFirst = manyToManyFields.shift();
   if (!manyFirst) {
@@ -28,7 +33,7 @@ function generateTables(
 
   manyToManyTables.push(
     `Table ${manyFirst?.relationName} {\n` +
-      `${generateJoinFields([manyFirst, manySecond], models)}` +
+      `${generateJoinFields([manyFirst, manySecond], models, mapToDbSchema)}` +
       '\n}'
   );
 
@@ -37,19 +42,34 @@ function generateTables(
       (field) => field.relationName !== manyFirst.relationName
     ),
     models,
-    manyToManyTables
+    manyToManyTables,
+    mapToDbSchema
   );
 }
 
-function generateJoinFields(field: DMMF.Field[], models: DMMF.Model[]): string {
-  return field.map((field) => joinField(field, models)).join('\n');
+function generateJoinFields(
+  field: DMMF.Field[],
+  models: DMMF.Model[],
+  mapToDbSchema: boolean = false
+): string {
+  return field
+    .map((field) => joinField(field, models, mapToDbSchema))
+    .join('\n');
 }
 
-function joinField(field: DMMF.Field, models: DMMF.Model[]): string {
+function joinField(
+  field: DMMF.Field,
+  models: DMMF.Model[],
+  mapToDbSchema: boolean = false
+): string {
+  const fieldName = mapToDbSchema
+    ? getModelByType(models, field.type)?.dbName || field.type
+    : field.type;
+
   return `  ${field.name.toLowerCase()}Id ${getJoinIdType(
     field,
     models
-  )} [ref: > ${field.type}.${field.relationToFields![0]}]`;
+  )} [ref: > ${fieldName}.${field.relationToFields![0]}]`;
 }
 
 function getJoinIdType(joinField: DMMF.Field, models: DMMF.Model[]): string {
