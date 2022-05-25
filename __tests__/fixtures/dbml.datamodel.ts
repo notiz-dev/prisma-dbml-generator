@@ -149,3 +149,30 @@ export const datamodelDbmlReferentialActions = /* Prisma */ `
     authorId   Int?
   }
 `;
+
+export const datamodelDbmlMapToDbSchema = /* Prisma */ `
+  model User {
+    id Int @id @default(autoincrement())
+    profile Profile?
+    posts Post[]
+    @@map("user")
+  }
+  model Profile {
+    id Int @id @default(autoincrement())
+    user   User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    userId Int     @unique
+    @@map("profile")
+  }
+  model Post {
+    id Int @id @default(autoincrement())
+    author     User?      @relation(fields: [authorId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+    authorId   Int?
+    categories Category[]
+    @@map("post")
+  }
+  model Category {
+    id    Int    @id @default(autoincrement())
+    posts Post[]
+    @@map("category")
+  }
+`;
