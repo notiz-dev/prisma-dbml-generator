@@ -1,3 +1,9 @@
+# [0.9.1](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.9.0...v0.9.1) (2022-05-25)
+
+### Bug Fixes
+
+- fix db name in many-to-many tables, relations and field names
+
 # [0.9.0](https://github.com/notiz-dev/prisma-dbml-generator/compare/v0.9.0-dev.1...v0.9.0) (2022-04-04)
 
 ### Features
