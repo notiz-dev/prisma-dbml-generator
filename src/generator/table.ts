@@ -4,7 +4,8 @@ import { getModelByType } from './model';
 
 export function generateTables(
   models: DMMF.Model[],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
+  includeRelationFields: boolean = true
 ): string[] {
   return models.map((model) => {
     let modelName = model.name;
@@ -15,7 +16,12 @@ export function generateTables(
 
     return (
       `${DBMLKeywords.Table} ${modelName} {\n` +
-      generateFields(model.fields, models, mapToDbSchema) +
+      generateFields(
+        model.fields,
+        models,
+        mapToDbSchema,
+        includeRelationFields
+      ) +
       generateTableIndexes(model) +
       generateTableDocumentation(model) +
       '\n}'
@@ -64,8 +70,13 @@ const generateTableDocumentation = (model: DMMF.Model): string => {
 const generateFields = (
   fields: DMMF.Field[],
   models: DMMF.Model[],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
+  includeRelationFields: boolean = true
 ): string => {
+  if (!includeRelationFields) {
+    fields = fields.filter((field) => !field.relationName);
+  }
+
   return fields
     .map((field) => {
       const relationToName = mapToDbSchema

@@ -136,16 +136,17 @@ Ref: Post.authorId > User.id
 
 ## Additional Options
 
-| Option                |  Description                                    | Type      |  Default      |
-| --------------------- | ----------------------------------------------- | --------- | ------------- |
-| `projectDatabaseType` | Project database type for dbdocs                | `string`  | `null`        |
-| `projectName`         | Project name for dbdocs                         | `string`  | `null`        |
-| `projectNote`         | Project note for dbdocs                         | `string`  | `null`        |
-| `projectNotePath`     | Project note path to a markdown file for dbdocs | `string`  | `null`        |
-| `output`              | Output directory for the DBML file              | `string`  | `./dbml`      |
-| `outputName`          | Name for the DBML file                          | `string`  | `dbml.schema` |
-| `manyToMany`          | Create Many-To-Many join table                  | `boolean` | `true`        |
-| `mapToDbSchema`       | Use mapped table name                           | `boolean` | `true`        |
+| Option                  |  Description                                    | Type      |  Default      |
+| ----------------------- | ----------------------------------------------- | --------- | ------------- |
+| `projectDatabaseType`   | Project database type for dbdocs                | `string`  | `null`        |
+| `projectName`           | Project name for dbdocs                         | `string`  | `null`        |
+| `projectNote`           | Project note for dbdocs                         | `string`  | `null`        |
+| `projectNotePath`       | Project note path to a markdown file for dbdocs | `string`  | `null`        |
+| `output`                | Output directory for the DBML file              | `string`  | `./dbml`      |
+| `outputName`            | Name for the DBML file                          | `string`  | `dbml.schema` |
+| `manyToMany`            | Create Many-To-Many join table                  | `boolean` | `true`        |
+| `mapToDbSchema`         | Use mapped table name                           | `boolean` | `true`        |
+| `includeRelationFields` | Include relation fields                         | `boolean` | `true`        |
 
 Use additional options in the `schema.prisma`
 
