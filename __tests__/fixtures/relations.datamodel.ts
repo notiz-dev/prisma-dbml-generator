@@ -19,7 +19,7 @@ export const datamodelOneToOne = /* Prisma */ `
     id Int @id @default(autoincrement())
     name String
     user   User    @relation(fields: [userId], references: [id])
-    userId Int
+    userId Int @unique
   }
 `;
 
@@ -34,7 +34,7 @@ export const datamodelOneToOneAndManyToOne = /* Prisma */ `
     id Int @id @default(autoincrement())
     name String
     user   User    @relation(fields: [userId], references: [id])
-    userId Int
+    userId Int @unique
   }
   model Post {
     id Int @id @default(autoincrement())

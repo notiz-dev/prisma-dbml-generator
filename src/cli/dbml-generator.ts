@@ -1,5 +1,5 @@
 import { GeneratorOptions } from '@prisma/generator-helper';
-import { parseEnvValue } from '@prisma/sdk';
+import { parseEnvValue } from '@prisma/internals';
 import { promises } from 'fs';
 import { join } from 'path';
 import { generateDBMLSchema } from '../generator/dbml';
