@@ -24,12 +24,3 @@ export const datamodelProjectWithNoteMd = /* Prisma */ `
     projectNotePath = "__tests__/mocks/projectNote.md"
   }
 `;
-
-export const datamodelExcludeGeneratedFields = /* Prisma */ `
-  generator dbml {
-    provider   = "prisma-dbml-generator"
-    projectDatabaseType = "PostgreSQL"
-    projectNote = "Test project description"
-    includeRelationFields = "false"
-  }
-`;
