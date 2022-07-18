@@ -9,7 +9,7 @@ export const datamodelDbml = /* Prisma */ `
     id Int @id @default(autoincrement())
     name String
     user   User    @relation(fields: [userId], references: [id])
-    userId Int
+    userId Int @unique
   }
   enum Role {
     ADMIN
@@ -50,7 +50,7 @@ export const datamodelDbmlRelations = /* Prisma */ `
   model Profile {
     id      Int     @id @default(autoincrement())
     user    User    @relation(fields: [userId], references: [id])
-    userId  Int
+    userId  Int @unique
   }
   model Post {
     id         Int         @id @default(autoincrement())
@@ -72,7 +72,7 @@ export const datamodelDbmlComments = /* Prisma */ `
     id Int @id @default(autoincrement())
     name String
     user   User    @relation(fields: [userId], references: [id])
-    userId Int
+    userId Int @unique
   }
   enum Role {
     ADMIN // Chuck Norris

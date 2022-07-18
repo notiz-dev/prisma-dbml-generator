@@ -1,6 +1,6 @@
 {
   "name": "prisma-dbml-generator",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Prisma DBML Generator",
   "bin": "./dist/generator.js",
   "scripts": {
@@ -43,17 +43,18 @@
     "url": "https://github.com/notiz-dev/prisma-dbml-generator/issues"
   },
   "dependencies": {
-    "@prisma/generator-helper": "3.14.0",
-    "@prisma/sdk": "3.14.0"
+    "@prisma/generator-helper": "4.0.0",
+    "@prisma/internals": "4.0.0"
   },
   "devDependencies": {
-    "@prisma/client": "3.14.0",
+    "@prisma/client": "4.0.0",
     "@types/jest": "^28.1.2",
     "@types/node": "14.17.0",
     "jest": "28.1.1",
     "prettier": "2.7.1",
-    "prisma": "3.14.0",
+    "prisma": "4.0.0",
     "ts-jest": "28.0.5",
+    "ts-toolbelt": "^9.6.0",
     "typescript": "4.7.4"
   }
 }
