@@ -1,9 +1,25 @@
-# Prisma DBML Generator
+<h1 align="center">prisma-dbml-generator</h1>
 
-[![npm version](https://badge.fury.io/js/prisma-dbml-generator.svg)](https://www.npmjs.com/package/prisma-dbml-generator)
-![Build and Test CI](https://github.com/notiz-dev/prisma-dbml-generator/workflows/Build%20and%20Test%20CI/badge.svg?branch=master)
+<p align="center">
+Automatically generate a <a href="https://www.dbml.org/home">DBML</a> schema from your <a href="https://github.com/prisma/prisma">Prisma</a> Schema.
+</p>
 
-Automatically generate a [DBML](https://www.dbml.org/home) schema from your [Prisma](https://github.com/prisma/prisma) Schema. Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files as Entity-Relationship Diagram:
+<p align="center">
+  <a href="https://github.com/notiz-dev/prisma-dbml-generator/actions/workflows/node.js.yml" target="_blank" rel="noopener">
+    <img src="https://github.com/notiz-dev/prisma-dbml-generator/workflows/Build%20and%20Test%20CI/badge.svg?branch=master"alt="Build Status"/>
+  </a>
+  <a href="https://www.npmjs.com/package/prisma-dbml-generator" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/npm/dt/prisma-dbml-generator.svg" alt="Total Downloads" />
+  </a>
+  <a href="https://www.npmjs.com/package/prisma-dbml-generator" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/npm/v/prisma-dbml-generator.svg" alt="npm package"/>
+  </a>
+  <a href="https://github.com/notiz-dev/prisma-dbml-generator/blob/main/LICENSE" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/npm/l/prisma-dbml-generator.svg" alt="License">
+  </a>
+</p>
+
+Updates every time `npx prisma generate` runs. Use [dbdiagram.io](https://dbdiagram.io/home) to visualize your `dbml` files as Entity-Relationship Diagram:
 
 ![DB Diagram](https://raw.githubusercontent.com/notiz-dev/prisma-dbml-generator/main/dbdiagram.png)
 
