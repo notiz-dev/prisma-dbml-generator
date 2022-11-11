@@ -15,6 +15,8 @@ export async function generate(options: GeneratorOptions) {
   const dbmlFileName = config.outputName || defaultDBMLFileName;
   const allowManyToMany = config.manyToMany === 'false' ? false : true;
   const mapToDbSchema = config.mapToDbSchema === 'false' ? false : true;
+  const includeRelationFields =
+    config.includeRelationFields === 'false' ? false : true;
   const projectOptions = await getProjectOptions(config);
 
   try {
@@ -27,6 +29,7 @@ export async function generate(options: GeneratorOptions) {
       options.dmmf,
       allowManyToMany,
       mapToDbSchema,
+      includeRelationFields,
       projectOptions
     );
 

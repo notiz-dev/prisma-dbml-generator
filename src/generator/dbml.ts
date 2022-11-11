@@ -13,9 +13,14 @@ export function generateDBMLSchema(
   dmmf: DMMF.Document,
   allowManyToMany: boolean = true,
   mapToDbSchema: boolean = false,
+  includeRelationFields: boolean = true,
   projectOptions?: ProjectOptions
 ): string {
-  const tables = generateTables(dmmf.datamodel.models, mapToDbSchema);
+  const tables = generateTables(
+    dmmf.datamodel.models,
+    mapToDbSchema,
+    includeRelationFields
+  );
   const manyToManyTables = allowManyToMany
     ? generateManyToManyTables(dmmf.datamodel.models, mapToDbSchema)
     : [];
