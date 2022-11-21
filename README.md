@@ -6,7 +6,7 @@ Automatically generate a <a href="https://www.dbml.org/home">DBML</a> schema fro
 
 <p align="center">
   <a href="https://github.com/notiz-dev/prisma-dbml-generator/actions/workflows/node.js.yml" target="_blank" rel="noopener">
-    <img src="https://github.com/notiz-dev/prisma-dbml-generator/workflows/Build%20and%20Test%20CI/badge.svg?branch=master"alt="Build Status"/>
+    <img src="https://github.com/notiz-dev/prisma-dbml-generator/actions/workflows/node.js.yml/badge.svg"alt="Build Status"/>
   </a>
   <a href="https://www.npmjs.com/package/prisma-dbml-generator" target="_blank" rel="noopener">
     <img src="https://img.shields.io/npm/dt/prisma-dbml-generator.svg" alt="Total Downloads" />
