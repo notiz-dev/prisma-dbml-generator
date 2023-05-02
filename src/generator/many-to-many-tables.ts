@@ -23,19 +23,24 @@ function generateTables(
     return manyToManyTables;
   }
 
+  // In the case of a manyMany, second field should be found
   const manySecond = manyToManyFields.find(
     (field) => field.relationName === manyFirst.relationName
   )!;
 
-  if (!manySecond) {
-    return manyToManyTables;
+  // If its a manyMany, generate the join table
+  // Else, it's a oneMany: ignore it and continue
+  if (manySecond) {
+    manyToManyTables.push(
+      `Table ${manyFirst?.relationName} {\n` +
+        `${generateJoinFields(
+          [manyFirst, manySecond],
+          models,
+          mapToDbSchema
+        )}` +
+        '\n}'
+    );
   }
-
-  manyToManyTables.push(
-    `Table ${manyFirst?.relationName} {\n` +
-      `${generateJoinFields([manyFirst, manySecond], models, mapToDbSchema)}` +
-      '\n}'
-  );
 
   return generateTables(
     manyToManyFields.filter(
@@ -48,11 +53,11 @@ function generateTables(
 }
 
 function generateJoinFields(
-  field: DMMF.Field[],
+  fields: [DMMF.Field, DMMF.Field],
   models: DMMF.Model[],
   mapToDbSchema: boolean = false
 ): string {
-  return field
+  return fields
     .map((field) => joinField(field, models, mapToDbSchema))
     .join('\n');
 }
@@ -94,9 +99,16 @@ function filterManyToManyRelationFields(models: DMMF.Model[]): DMMF.Field[] {
             field.relationName &&
             field.isList &&
             field.relationFromFields?.length === 0 &&
-            field.relationToFields?.length
+            // Updated this condition to match manyMany fields as defined in the new DMMF
+            field.relationToFields?.length === 0
         )
-        .map((field) => field)
+        // As the relationToFields is not populated in the DMMF, we need to populate it manually
+        .map((field) => ({
+          ...field,
+          relationToFields: model.fields
+            .filter((f) => f.isId)
+            .map((f) => f.name),
+        }))
     )
     .flat();
 }
