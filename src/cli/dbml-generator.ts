@@ -1,6 +1,6 @@
 import { GeneratorOptions } from '@prisma/generator-helper';
 import { parseEnvValue } from '@prisma/internals';
-import { promises } from 'fs';
+import { constants, promises } from 'fs';
 import { join } from 'path';
 import { generateDBMLSchema } from '../generator/dbml';
 import { getProjectOptions } from '../generator/project';
@@ -21,13 +21,13 @@ export async function generate(options: GeneratorOptions) {
   const projectOptions = await getProjectOptions(config);
 
   try {
-   await access(outputDir);
+   await access(join(outputDir, '..'), constants.W_OK);
   } catch (e) {
     if (throwOnFailure) {
-      throw new Error(`Warning: output directory ${outputDir} cannot be accessed.`);
+      throw new Error(`Warning: output directory ${outputDir} cannot be written.`);
     }
 
-    console.warn(`Warning: output directory ${outputDir} cannot be accessed.`);
+    console.warn(`Warning: output directory ${outputDir} cannot be written.`);
     process.exit(0);
   }
 
