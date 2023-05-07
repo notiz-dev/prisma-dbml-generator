@@ -5,7 +5,7 @@ import { join } from 'path';
 import { generateDBMLSchema } from '../generator/dbml';
 import { getProjectOptions } from '../generator/project';
 
-const { mkdir, writeFile } = promises;
+const { access, mkdir, writeFile } = promises;
 
 export const defaultDBMLFileName = 'schema.dbml';
 
@@ -17,7 +17,19 @@ export async function generate(options: GeneratorOptions) {
   const mapToDbSchema = config.mapToDbSchema === 'false' ? false : true;
   const includeRelationFields =
     config.includeRelationFields === 'false' ? false : true;
+  const throwOnFailure = config.throwOnFailure === 'false' ? false : true;
   const projectOptions = await getProjectOptions(config);
+
+  try {
+   await access(outputDir);
+  } catch (e) {
+    if (throwOnFailure) {
+      throw new Error(`Warning: output directory ${outputDir} cannot be accessed.`);
+    }
+
+    console.warn(`Warning: output directory ${outputDir} cannot be accessed.`);
+    process.exit(0);
+  }
 
   try {
     await mkdir(outputDir, { recursive: true });
@@ -35,7 +47,11 @@ export async function generate(options: GeneratorOptions) {
 
     await writeFile(join(outputDir, dbmlFileName), dbmlSchema);
   } catch (e) {
-    console.error('Error: unable to write files for Prisma DBML Generator');
-    throw e;
+    if (throwOnFailure) {
+      console.error('Error: unable to write files for Prisma DBML Generator');
+      throw e;
+    }
+
+    console.warn('Warning: unable to write files for Prisma DBML Generator');
   }
 }
