@@ -159,7 +159,7 @@ Ref: Post.authorId > User.id
 | `projectNote`           | Project note for dbdocs                         | `string`  | `null`        |
 | `projectNotePath`       | Project note path to a markdown file for dbdocs | `string`  | `null`        |
 | `output`                | Output directory for the DBML file              | `string`  | `./dbml`      |
-| `outputName`            | Name for the DBML file                          | `string`  | `dbml.schema` |
+| `outputName`            | Name for the DBML file                          | `string`  | `schema.dbml` |
 | `manyToMany`            | Create Many-To-Many join table                  | `boolean` | `true`        |
 | `mapToDbSchema`         | Use mapped table name                           | `boolean` | `true`        |
 | `includeRelationFields` | Include relation fields                         | `boolean` | `true`        |
