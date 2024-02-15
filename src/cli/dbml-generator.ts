@@ -12,7 +12,11 @@ export const defaultDBMLFileName = 'schema.dbml';
 export async function generate(options: GeneratorOptions) {
   const { output, config } = options.generator;
   const outputDir = parseEnvValue(output!);
-  const dbmlFileName = config.outputName || defaultDBMLFileName;
+
+  const dbmlFileName =
+    typeof config.outputName === 'string'
+      ? config.outputName
+      : defaultDBMLFileName;
   const allowManyToMany = config.manyToMany === 'false' ? false : true;
   const mapToDbSchema = config.mapToDbSchema === 'false' ? false : true;
   const includeRelationFields =

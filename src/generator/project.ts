@@ -37,24 +37,32 @@ export async function getProjectOptions({
   projectDatabaseType,
   projectNote,
   projectNotePath,
-}: GeneratorConfig['config']): Promise<ProjectOptions> {
-  let projectNoteMd = '';
+}: GeneratorConfig['config']): Promise<ProjectOptions | undefined> {
+  if (typeof projectName === 'string') {
+    let projectNoteMd = '';
 
-  if (projectNotePath) {
-    const fullPath = `${process.cwd()}/${projectNotePath}`;
-    try {
-      projectNoteMd = await readFile(fullPath, 'utf-8');
-    } catch (e) {
-      console.log(
-        `❌ Error: project note markdown file not found: ${fullPath}`,
-      );
+    if (projectNotePath) {
+      const fullPath = `${process.cwd()}/${projectNotePath}`;
+      try {
+        projectNoteMd = await readFile(fullPath, 'utf-8');
+      } catch (e) {
+        console.log(
+          `❌ Error: project note markdown file not found: ${fullPath}`,
+        );
+      }
     }
-  }
 
-  return {
-    name: projectName && `"${projectName}"`,
-    databaseType: projectDatabaseType || '',
-    note: projectNoteMd || projectNote || '', // noteMd takes precedence
-    isMd: projectNoteMd !== '',
-  };
+    return {
+      name: projectName && `"${projectName}"`,
+      databaseType:
+        typeof projectDatabaseType === 'string' ? projectDatabaseType : '',
+      note: projectNoteMd
+        ? projectNoteMd
+        : typeof projectNote === 'string'
+          ? projectNote
+          : '', // noteMd takes precedence
+      isMd: projectNoteMd !== '',
+    };
+  }
+  return undefined;
 }

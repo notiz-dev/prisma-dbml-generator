@@ -10,15 +10,13 @@ describe('Project', () => {
   test('generate no project block', async () => {
     const { generators } = await generateConfig(datamodelUnnamedProject);
     const projectOptions = await getProjectOptions(generators[0].config);
-    const project = generateProject(projectOptions);
-
-    expect(project.length).toEqual(0);
+    expect(projectOptions).toBeUndefined();
   });
 
   test('generate a project block with note', async () => {
     const { generators } = await generateConfig(datamodelProjectWithNote);
     const projectOptions = await getProjectOptions(generators[0].config);
-    const project = generateProject(projectOptions);
+    const project = generateProject(projectOptions!);
 
     const expected =
       'Project "Test Project" {\n' +
@@ -33,7 +31,7 @@ describe('Project', () => {
   test('generate a project block with noteMd', async () => {
     const { generators } = await generateConfig(datamodelProjectWithNoteMd);
     const projectOptions = await getProjectOptions(generators[0].config);
-    const project = generateProject(projectOptions);
+    const project = generateProject(projectOptions!);
 
     const expected =
       'Project "Test Project" {\n' +
