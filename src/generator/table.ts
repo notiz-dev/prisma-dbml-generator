@@ -5,7 +5,7 @@ import { getModelByType } from './model';
 export function generateTables(
   models: DMMF.Model[],
   mapToDbSchema: boolean = false,
-  includeRelationFields: boolean = true
+  includeRelationFields: boolean = true,
 ): string[] {
   return models.map((model) => {
     let modelName = model.name;
@@ -20,7 +20,7 @@ export function generateTables(
         model.fields,
         models,
         mapToDbSchema,
-        includeRelationFields
+        includeRelationFields,
       ) +
       generateTableIndexes(model) +
       generateTableDocumentation(model) +
@@ -52,12 +52,12 @@ const generateTableBlockId = (primaryFields: string[] | undefined): string => {
 };
 
 const generateTableCompositeUniqueIndex = (
-  uniqueFields: string[][]
+  uniqueFields: string[][],
 ): string => {
   return uniqueFields
     .filter((composite) => composite.length > 1)
     .map(
-      (composite) => `    (${composite.join(', ')}) [${DBMLKeywords.Unique}]`
+      (composite) => `    (${composite.join(', ')}) [${DBMLKeywords.Unique}]`,
     )
     .join('\n');
 };
@@ -71,7 +71,7 @@ const generateFields = (
   fields: DMMF.Field[],
   models: DMMF.Model[],
   mapToDbSchema: boolean = false,
-  includeRelationFields: boolean = true
+  includeRelationFields: boolean = true,
 ): string => {
   if (!includeRelationFields) {
     fields = fields.filter((field) => !field.relationName);
@@ -129,7 +129,7 @@ const generateColumnDefinition = (field: DMMF.Field): string => {
 
   if (field.documentation) {
     columnDefinition.push(
-      `${DBMLKeywords.Note}: '${field.documentation.replace(/'/g, "\\'")}'`
+      `${DBMLKeywords.Note}: '${field.documentation.replace(/'/g, "\\'")}'`,
     );
   }
 

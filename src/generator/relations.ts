@@ -7,7 +7,7 @@ export const manyToOne = '>';
 
 export function generateRelations(
   models: DMMF.Model[],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
 ): string[] {
   const refs: string[] = [];
   models.forEach((model) => {
@@ -16,7 +16,7 @@ export function generateRelations(
         (field) =>
           field.relationName &&
           field.relationToFields?.length &&
-          field.relationFromFields?.length
+          field.relationFromFields?.length,
       )
       .forEach((field) => {
         const relationFrom = model.name;
@@ -25,7 +25,7 @@ export function generateRelations(
         const relationOperator = getRelationOperator(
           models,
           relationFrom,
-          relationTo
+          relationTo,
         );
 
         const relationFormName =
@@ -36,15 +36,15 @@ export function generateRelations(
           : relationTo;
 
         const ref = `Ref: ${relationFormName}.${combineKeys(
-          field.relationFromFields!
+          field.relationFromFields!,
         )} ${relationOperator} ${relationToName}.${combineKeys(
-          field.relationToFields!!
+          field.relationToFields!!,
         )}`;
 
         const referentialActions = getReferentialActions(
           models,
           relationFrom,
-          relationTo
+          relationTo,
         );
 
         refs.push(`${ref}${referentialActions}`);
@@ -56,7 +56,7 @@ export function generateRelations(
 const getRelationOperator = (
   models: DMMF.Model[],
   from: string,
-  to: string
+  to: string,
 ): string => {
   const model = models.find((model) => model.name === to);
   const field = model?.fields.find((field) => field.type === from);
@@ -72,7 +72,7 @@ const combineKeys = (keys: string[]): string => {
 const getReferentialActions = (
   models: DMMF.Model[],
   from: string,
-  to: string
+  to: string,
 ): string => {
   const model = models.find((model) => model.name === from);
   const field = model?.fields.find((field) => field.type === to);
@@ -83,7 +83,7 @@ const getReferentialActions = (
       `delete: ${
         referentialActionsMap.get(field.relationOnDelete) ||
         field.relationOnDelete
-      }`
+      }`,
     );
   }
 

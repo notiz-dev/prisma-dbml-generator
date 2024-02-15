@@ -3,7 +3,7 @@ import { DMMF } from '@prisma/generator-helper';
 
 export function generateManyToManyTables(
   models: DMMF.Model[],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
 ): string[] {
   const manyToManyFields = filterManyToManyRelationFields(models);
   if (manyToManyFields.length === 0) {
@@ -16,7 +16,7 @@ function generateTables(
   manyToManyFields: DMMF.Field[],
   models: DMMF.Model[],
   manyToManyTables: string[] = [],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
 ): string[] {
   const manyFirst = manyToManyFields.shift();
   if (!manyFirst) {
@@ -25,7 +25,7 @@ function generateTables(
 
   // In the case of a manyMany, second field should be found
   const manySecond = manyToManyFields.find(
-    (field) => field.relationName === manyFirst.relationName
+    (field) => field.relationName === manyFirst.relationName,
   )!;
 
   // If its a manyMany, generate the join table
@@ -36,26 +36,26 @@ function generateTables(
         `${generateJoinFields(
           [manyFirst, manySecond],
           models,
-          mapToDbSchema
+          mapToDbSchema,
         )}` +
-        '\n}'
+        '\n}',
     );
   }
 
   return generateTables(
     manyToManyFields.filter(
-      (field) => field.relationName !== manyFirst.relationName
+      (field) => field.relationName !== manyFirst.relationName,
     ),
     models,
     manyToManyTables,
-    mapToDbSchema
+    mapToDbSchema,
   );
 }
 
 function generateJoinFields(
   fields: [DMMF.Field, DMMF.Field],
   models: DMMF.Model[],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
 ): string {
   return fields
     .map((field) => joinField(field, models, mapToDbSchema))
@@ -65,7 +65,7 @@ function generateJoinFields(
 function joinField(
   field: DMMF.Field,
   models: DMMF.Model[],
-  mapToDbSchema: boolean = false
+  mapToDbSchema: boolean = false,
 ): string {
   const fieldName = mapToDbSchema
     ? getModelByType(models, field.type)?.dbName || field.type
@@ -73,7 +73,7 @@ function joinField(
 
   return `  ${field.name.toLowerCase()}Id ${getJoinIdType(
     field,
-    models
+    models,
   )} [ref: > ${fieldName}.${field.relationToFields![0]}]`;
 }
 
@@ -83,8 +83,8 @@ function getJoinIdType(joinField: DMMF.Field, models: DMMF.Model[]): string {
     .map(
       (model) =>
         model.fields.find(
-          (field) => field.name === joinField.relationToFields![0]
-        )!
+          (field) => field.name === joinField.relationToFields![0],
+        )!,
     )[0];
 
   return joinIdField.type;
@@ -100,7 +100,7 @@ function filterManyToManyRelationFields(models: DMMF.Model[]): DMMF.Field[] {
             field.isList &&
             field.relationFromFields?.length === 0 &&
             // Updated this condition to match manyMany fields as defined in the new DMMF
-            field.relationToFields?.length === 0
+            field.relationToFields?.length === 0,
         )
         // As the relationToFields is not populated in the DMMF, we need to populate it manually
         .map((field) => ({
@@ -108,7 +108,7 @@ function filterManyToManyRelationFields(models: DMMF.Model[]): DMMF.Field[] {
           relationToFields: model.fields
             .filter((f) => f.isId)
             .map((f) => f.name),
-        }))
+        })),
     )
     .flat();
 }

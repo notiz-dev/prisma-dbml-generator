@@ -46,7 +46,7 @@ export async function getProjectOptions({
       projectNoteMd = await readFile(fullPath, 'utf-8');
     } catch (e) {
       console.log(
-        `❌ Error: project note markdown file not found: ${fullPath}`
+        `❌ Error: project note markdown file not found: ${fullPath}`,
       );
     }
   }

@@ -30,7 +30,7 @@ export async function generate(options: GeneratorOptions) {
       allowManyToMany,
       mapToDbSchema,
       includeRelationFields,
-      projectOptions
+      projectOptions,
     );
 
     await writeFile(join(outputDir, dbmlFileName), dbmlSchema);

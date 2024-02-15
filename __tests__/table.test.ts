@@ -45,7 +45,7 @@ describe('Tables', () => {
 
   test('generate a table with single composite unique index', async () => {
     const dmmf = await generateDMMF(
-      datamodelTableWithSingleCompositeUniqueIndex
+      datamodelTableWithSingleCompositeUniqueIndex,
     );
 
     const expected = `Table A {
@@ -61,7 +61,7 @@ describe('Tables', () => {
 
   test('generate a table with three fields as composite unique index', async () => {
     const dmmf = await generateDMMF(
-      datamodelTableWithThreeFieldsCompositeUniqueIndex
+      datamodelTableWithThreeFieldsCompositeUniqueIndex,
     );
 
     const expected = `Table A {
@@ -144,7 +144,7 @@ describe('Tables', () => {
 
   test('generate a table with block id and composite unique index', async () => {
     const dmmf = await generateDMMF(
-      datamodelTableWithBlockIdAndCompositeUnqiue
+      datamodelTableWithBlockIdAndCompositeUnqiue,
     );
 
     const expected = `Table User {
